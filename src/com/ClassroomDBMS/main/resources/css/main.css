@@ -7,3 +7,7 @@
 .root{
     -fx-background-color: -fx-mainWindowBackgroundColor;
 }
+
+.split-pane > .split-pane-divider {
+    -fx-padding: 0;
+}
