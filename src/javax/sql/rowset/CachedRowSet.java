@@ -329,7 +329,7 @@ import javax.sql.rowset.spi.*;
  * a change in <code>crs</code>.
  *
  * <h3>6.0 Passing Data to Thin Clients</h3>
- * One of the main reasons to use a <code>CachedRowSet</code> object is to
+ * One of the home reasons to use a <code>CachedRowSet</code> object is to
  * pass data between different components of an application. Because it is
  * serializable, a <code>CachedRowSet</code> object can be used, for example,
  * to send the result of a query executed by an enterprise JavaBeans component
