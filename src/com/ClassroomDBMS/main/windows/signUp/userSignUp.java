@@ -30,9 +30,9 @@ public class userSignUp {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public String[] status = {"",""};
+    public String[] status;
 
-    public String[] userSignUp(){
+    public void userSignUp(){
         final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
         Stage loginStage = new Stage();
@@ -129,13 +129,12 @@ public class userSignUp {
         );
 
         SignUpScene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
-        loginStage.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomPopcorn.png")));
+        loginStage.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomDBMS.png")));
 
         loginStage.setScene(SignUpScene);
         loginStage.setResizable(false);
         loginStage.showAndWait();
 
-        return status;
     }
 
     public static boolean validate(String emailStr) {

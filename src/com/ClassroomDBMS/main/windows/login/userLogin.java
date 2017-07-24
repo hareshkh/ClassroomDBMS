@@ -1,7 +1,9 @@
 package com.ClassroomDBMS.main.windows.login;
 
 import com.ClassroomDBMS.database.logIn.dbLoginCheck;
+import com.ClassroomDBMS.main.functions.profile;
 import com.ClassroomDBMS.main.windows.home.main;
+
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
@@ -24,13 +26,13 @@ import javafx.stage.Stage;
 
 public class userLogin {
 
-    public String[] status = {"",""};
+    public String[] status;
 
-    public String[] userLogin(){
+    public void userLogin(){
         final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
         Stage loginStage = new Stage();
-        loginStage.setTitle("Classroom Popcorn login");
+        loginStage.setTitle("Classroom DBMS login");
         loginStage.initModality(Modality.APPLICATION_MODAL);
 
         BorderPane loginPane = new BorderPane();
@@ -50,7 +52,7 @@ public class userLogin {
         vb.setPadding(new Insets(50,20,-20,20));
 
         TextField username = new TextField();
-        username.setPromptText("username or email address");
+        username.setPromptText("full name or email address");
         username.setStyle("-fx-border-radius: 100");
         username.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
             if(newValue && firstTime.get()){
@@ -79,14 +81,17 @@ public class userLogin {
         loginRow.setAlignment(Pos.BASELINE_CENTER);
 
         loginButton.setOnAction(e-> {
+            e.consume();
             if (username.getText().isEmpty())
                 error.setText("Username or EmailId can't be empty");
             else if (password.getText().isEmpty())
                 error.setText("Password can't be empty");
             else{
                 status = dbLoginCheck.dbLoginCheck(username.getText(),password.getText());
-                if (status[0]=="success")
+                if (status[0]=="success"){
+                    main.window.setScene(profile.main(status));
                     loginStage.close();
+                }
                 else
                     error.setText("Incorrect Username / Email Id or password !");
             }
@@ -105,9 +110,8 @@ public class userLogin {
 
         loginStage.setScene(loginScene);
         loginStage.setResizable(false);
-        loginStage.showAndWait();
+        loginStage.show();
 
-        return status;
     }
 
 }

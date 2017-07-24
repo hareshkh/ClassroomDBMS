@@ -15,7 +15,7 @@ public class userLoggedIn {
 
         String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.currentuser", "" );
 
-        String[] status = new String[7];
+        String[] status = new String[6];
 
         try {
             con = DBUtils.getConnection();
@@ -25,10 +25,9 @@ public class userLoggedIn {
             status[0]="success";
             status[1]=rs.getString("fullName");
             status[2]=rs.getString("emailId");
-            status[3]=rs.getString("password");
-            status[4]=rs.getString("phoneNumber");
-            status[5]=rs.getString("gender");
-            status[6]=rs.getString("college");
+            status[3]=rs.getString("phoneNumber");
+            status[4]=rs.getString("gender");
+            status[5]=rs.getString("college");
         } catch (Exception e) {
             status[0] = e.getMessage();
         } finally {

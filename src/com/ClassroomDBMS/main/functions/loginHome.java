@@ -45,18 +45,12 @@ public class loginHome {
 
         login.setOnMouseClicked(e->{
             userLogin ob = new userLogin();
-            String[] status = ob.userLogin();
-
-            if (status[0].equals("success"))
-                System.out.println("successfully logged in");
+            ob.userLogin();
         });
 
         register.setOnMouseClicked(e->{
             userSignUp ob = new userSignUp();
-            String[] status = ob.userSignUp();
-
-            if (status[0].equals("success"))
-                System.out.println("successfully signed in");
+            ob.userSignUp();
         });
 
         headerVB.getChildren().addAll(login,register);
@@ -76,8 +70,9 @@ public class loginHome {
 
         headerlayout.setCenter(centerVB);
 
-        Scene scene = new Scene(headerlayout);
+        Scene scene = new Scene(headerlayout,800,500);
         scene.getStylesheets().add(loginHome.class.getResource("../resources/css/main.css").toExternalForm());
+
         return  scene;
     }
 }
