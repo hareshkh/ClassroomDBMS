@@ -1,5 +1,6 @@
 package com.ClassroomDBMS.main.functions;
 
+import com.ClassroomDBMS.database.signIn.deleteAccount;
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
 import com.ClassroomDBMS.main.templates.editProfile.*;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -61,11 +63,20 @@ public class profile {
         phoneNumbercollege.setTextFill(Color.web("#ededed"));
         phoneNumbercollege.setWrapText(true);
 
+        HBox profileSetting = new HBox(10);
+        profileSetting.setAlignment(Pos.TOP_CENTER);
+
         Button editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT,"Edit Profile");
         editButton.setStyle("-fx-border-radius: 100");
         editButton.setCursor(Cursor.HAND);
 
-        userData.getChildren().addAll(logo,fullName,emailID,phoneNumbercollege,editButton);
+        Button deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.CUT,"Delete Profile");
+        editButton.setStyle("-fx-border-radius: 100");
+        editButton.setCursor(Cursor.HAND);
+
+        profileSetting.getChildren().addAll(editButton,deleteButton);
+
+        userData.getChildren().addAll(logo,fullName,emailID,phoneNumbercollege,profileSetting);
         userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 2 0;-fx-underline: true;");
 
         options.setTop(userData);
@@ -140,6 +151,11 @@ public class profile {
             findPeople.setTextFill(Color.web("#171717"));
             speakOut.setTextFill(Color.web("#171717"));
             TAs.setTextFill(Color.web("#171717"));
+        });
+
+        deleteButton.setOnAction(e-> {
+            deleteAccount.deleteAccount(emailID.getText());
+            main.window.setScene(loginHome.homeView());
         });
 
         findPeople.setOnMouseClicked(e-> {

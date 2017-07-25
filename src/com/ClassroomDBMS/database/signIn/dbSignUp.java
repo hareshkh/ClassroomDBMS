@@ -15,13 +15,12 @@ public class dbSignUp {
 
         String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomdbms.currentuser", "fullName, emailId, phoneNumber, gender, college", "?,?,?,?,?");
 
-        String[] status = new String[7];
+        String[] status = new String[6];
         status[1]=fullName;
         status[2]=emailId;
-        status[3]=password;
-        status[4]=phoneNumber;
-        status[5]=gender;
-        status[6]=college;
+        status[3]=phoneNumber;
+        status[4]=gender;
+        status[5]=college;
 
         try{
             con = DBUtils.getConnection();
@@ -52,5 +51,4 @@ public class dbSignUp {
             return status;
         }
     }
-
 }
