@@ -21,6 +21,10 @@ import javafx.scene.text.Font;
 
 public class profile {
 
+    public static Label fullName;
+    public static Label emailID;
+    public static Label phoneNumbercollege;
+
     public static Scene main(String[] profileDetails){
         BorderPane userOptions = new BorderPane();
 
@@ -43,24 +47,24 @@ public class profile {
         StackPane logo = new StackPane(userLOGO);
         logo.setStyle("-fx-background-color: #fff");
 
-        Label fullName = new Label(profileDetails[1]);
+        fullName = new Label(profileDetails[1]);
         fullName.setFont(new Font("Cambria", 25));
         fullName.setTextFill(Color.web("#ededed"));
 
-        Label emailID = new Label(profileDetails[2]);
+        emailID = new Label(profileDetails[2]);
         emailID.setFont(new Font("Cambria", 15));
         emailID.setTextFill(Color.web("#ededed"));
 
-        Label college = new Label(profileDetails[3]+",  "+profileDetails[5]);
-        college.setFont(new Font("Cambria", 15));
-        college.setTextFill(Color.web("#ededed"));
-        college.setWrapText(true);
+        phoneNumbercollege = new Label(profileDetails[3]+",  "+profileDetails[5]);
+        phoneNumbercollege.setFont(new Font("Cambria", 15));
+        phoneNumbercollege.setTextFill(Color.web("#ededed"));
+        phoneNumbercollege.setWrapText(true);
 
         Button editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT,"Edit Profile");
         editButton.setStyle("-fx-border-radius: 100");
         editButton.setCursor(Cursor.HAND);
 
-        userData.getChildren().addAll(logo,fullName,emailID,college,editButton);
+        userData.getChildren().addAll(logo,fullName,emailID,phoneNumbercollege,editButton);
         userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 2 0;-fx-underline: true;");
 
         options.setTop(userData);

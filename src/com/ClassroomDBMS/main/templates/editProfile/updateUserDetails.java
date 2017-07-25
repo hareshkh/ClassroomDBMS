@@ -2,6 +2,7 @@ package com.ClassroomDBMS.main.templates.editProfile;
 
 import com.ClassroomDBMS.database.logIn.userLoggedIn;
 import com.ClassroomDBMS.database.updateProfile.*;
+import com.ClassroomDBMS.main.functions.profile;
 
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.beans.property.BooleanProperty;
@@ -21,7 +22,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +37,7 @@ public class updateUserDetails {
     public BorderPane updateUserDetails(){
         String[] currentUserDetail = userLoggedIn.userLoggedIn();
 
-        BorderPane profile = new BorderPane();
+        BorderPane editprofile = new BorderPane();
 
         BorderPane general = new BorderPane();
         general.setPadding(new Insets(20,100,30,100));
@@ -58,7 +58,7 @@ public class updateUserDetails {
         fullName.setPrefHeight(35);
         fullName.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
             if(newValue && firstTime.get()){
-                profile.requestFocus(); // Delegate the focus to container
+                editprofile.requestFocus(); // Delegate the focus to container
                 firstTime.setValue(false); // Variable value changed for future references
             }
         });
@@ -111,6 +111,9 @@ public class updateUserDetails {
                 if (status.equals("Success")){
                     errorIngeneral.setTextFill(Color.web("green"));
                     errorIngeneral.setText("Profile Saved Succcessfully");
+                    profile.fullName.setText(fullName.getText());
+                    profile.emailID.setText(emailId.getText());
+                    profile.phoneNumbercollege.setText(phoneNumber.getText()+", "+college.getText());
                 }
                 else
                     errorIngeneral.setText(status);
@@ -235,10 +238,10 @@ public class updateUserDetails {
             confirmPass.setPrefWidth(0.3*main.window.getWidth());
         });
 
-        profile.setTop(general);
-        profile.setCenter(password);
+        editprofile.setTop(general);
+        editprofile.setCenter(password);
 
-        return profile;
+        return editprofile;
     }
 
     public static boolean validate(String emailStr) {

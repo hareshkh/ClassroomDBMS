@@ -1,16 +1,14 @@
 package com.ClassroomDBMS.main.windows.signUp;
 
 import com.ClassroomDBMS.database.signIn.dbSignUp;
+import com.ClassroomDBMS.main.functions.profile;
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -35,22 +33,22 @@ public class userSignUp {
     public void userSignUp(){
         final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
-        Stage loginStage = new Stage();
-        loginStage.setTitle("Classroom Popcorn Signup");
-        loginStage.initModality(Modality.APPLICATION_MODAL);
+        Stage signUpStage = new Stage();
+        signUpStage.setTitle("Classroom DBMS Signup");
+        signUpStage.initModality(Modality.APPLICATION_MODAL);
 
-        BorderPane loginPane = new BorderPane();
-        loginPane.setPadding(new Insets(50,20,20,20));
+        BorderPane signUpPane = new BorderPane();
+        signUpPane.setPadding(new Insets(50,20,20,20));
 
-        HBox loginHeader = new HBox();
+        HBox signUpHeader = new HBox();
 
-        loginHeader.setAlignment(Pos.BASELINE_CENTER);
+        signUpHeader.setAlignment(Pos.BASELINE_CENTER);
         Label header = new Label("Sign Up");
         header.setFont(new Font("Cambria", 25));
         header.setTextFill(Color.web("#fff"));
-        loginHeader.getChildren().add(header);
+        signUpHeader.getChildren().add(header);
 
-        loginPane.setTop(loginHeader);
+        signUpPane.setTop(signUpHeader);
 
         VBox vb = new VBox(15);
         vb.setPadding(new Insets(50,20,-20,20));
@@ -60,14 +58,10 @@ public class userSignUp {
         fullName.setStyle("-fx-border-radius: 100");
         fullName.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
             if(newValue && firstTime.get()){
-                loginPane.requestFocus(); // Delegate the focus to container
+                signUpPane.requestFocus(); // Delegate the focus to container
                 firstTime.setValue(false); // Variable value changed for future references
             }
         });
-
-        TextField username = new TextField();
-        username.setPromptText("Username");
-        username.setStyle("-fx-border-radius: 100");
 
         TextField email = new TextField();
         email.setPromptText("Email Id");
@@ -78,29 +72,48 @@ public class userSignUp {
         password.setStyle("-fx-border-radius: 100");
 
         PasswordField confirmPassword = new PasswordField();
-        confirmPassword.setPromptText("password");
+        confirmPassword.setPromptText("Confirm password");
         confirmPassword.setStyle("-fx-border-radius: 100");
+
+        TextField phoneNumber = new TextField();
+        phoneNumber.setPromptText("Phone Number");
+        phoneNumber.setStyle("-fx-border-radius: 100");
+
+        HBox genderCollection = new HBox(10);
+        Label genderLabel = new Label("Gender: ");
+        genderLabel.setFont(new Font("Cambria", 20));
+        genderLabel.setTextFill(Color.web("#5a5a5a"));
+        ComboBox genderComboBox = new ComboBox();
+        genderComboBox.getItems().addAll(
+                "Male",
+                "Female"
+        );
+        genderComboBox.setPrefWidth(247);
+        genderComboBox.getSelectionModel().selectFirst();
+        genderCollection.getChildren().addAll(genderLabel,genderComboBox);
+
+        TextField college = new TextField();
+        college.setPromptText("College Name");
+        college.setStyle("-fx-border-radius: 100");
 
         Label error = new Label();
         error.setTextFill(Color.web("red"));
 
-        vb.getChildren().addAll(fullName, username, email, password, confirmPassword, error);
+        vb.getChildren().addAll(fullName, email, password, confirmPassword, phoneNumber, genderCollection, college, error);
 
-        loginPane.setCenter(vb);
+        signUpPane.setCenter(vb);
 
-        HBox loginRow = new HBox();
+        HBox signUpRow = new HBox();
         Button signUpButton = new Button("SignUp");
         signUpButton.setFont(new Font("Cambria", 18));
         signUpButton.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
         signUpButton.setTextFill(Color.web("#fff"));
-        loginRow.getChildren().addAll(signUpButton);
-        loginRow.setAlignment(Pos.BASELINE_CENTER);
+        signUpRow.getChildren().addAll(signUpButton);
+        signUpRow.setAlignment(Pos.BASELINE_CENTER);
 
         signUpButton.setOnAction(e-> {
             if (fullName.getText().isEmpty())
                 error.setText("Full Name can't be empty");
-            else if (username.getText().isEmpty())
-                error.setText("username can't be empty");
             else if (email.getText().isEmpty())
                 error.setText("Email Id can't be empty");
             else if (!validate(email.getText()))
@@ -111,29 +124,35 @@ public class userSignUp {
                 error.setText("ConfirmPassword can't be empty");
             else if (!password.getText().equals(confirmPassword.getText()))
                 error.setText("Password and confirm password don't match");
+            else if (phoneNumber.getText().isEmpty())
+                error.setText("Phone Number can't be empty");
+            else if (college.getText().isEmpty())
+                error.setText("college name can't be empty");
             else{
-                status = dbSignUp.userSignUp(fullName.getText(),username.getText(),email.getText(),password.getText());
-                if (status[0]=="success")
-                    loginStage.close();
+                status = dbSignUp.userSignUp(fullName.getText(),email.getText(),password.getText(),phoneNumber.getText(), genderComboBox.getValue().toString(),college.getText());
+                if (status[0]=="success") {
+                    main.window.setScene(profile.main(status));
+                    signUpStage.close();
+                }
                 else
                     error.setText(status[0]);
             }
         });
 
-        loginPane.setBottom(loginRow);
+        signUpPane.setBottom(signUpRow);
 
-        Scene SignUpScene = new Scene(loginPane,400,450);
+        Scene SignUpScene = new Scene(signUpPane,400,520);
         SignUpScene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.ENTER),
                 () -> signUpButton.fire()
         );
 
         SignUpScene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
-        loginStage.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomDBMS.png")));
+        signUpStage.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomDBMS.png")));
 
-        loginStage.setScene(SignUpScene);
-        loginStage.setResizable(false);
-        loginStage.showAndWait();
+        signUpStage.setScene(SignUpScene);
+        signUpStage.setResizable(false);
+        signUpStage.showAndWait();
 
     }
 

@@ -7,31 +7,40 @@ import java.sql.PreparedStatement;
 
 public class dbSignUp {
 
-    public static String[] userSignUp(String fullName,String userName,String emailId,String password){
+    public static String[] userSignUp(String fullName, String emailId, String password, String phoneNumber, String gender, String college){
         Connection con = null;
 
         PreparedStatement stmt = null;
-        String query = DBUtils.prepareInsertQuery("classroompopcorn.userdetail", "fullName, username, emailId, password", "?,?,?,?");
+        String query = DBUtils.prepareInsertQuery("classroomdbms.userdetail", "fullName, emailId, password, phoneNumber, gender, college", "?,?,?,?,?,?");
 
-        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroompopcorn.currentuserlog", "username, fullName, loggedIn", "?,?,?");
+        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomdbms.currentuser", "fullName, emailId, phoneNumber, gender, college", "?,?,?,?,?");
 
-        String[] status = {"ongoing","username"};
+        String[] status = new String[7];
+        status[1]=fullName;
+        status[2]=emailId;
+        status[3]=password;
+        status[4]=phoneNumber;
+        status[5]=gender;
+        status[6]=college;
 
         try{
             con = DBUtils.getConnection();
             stmt = con.prepareStatement(query);
             stmt.setString(1, fullName);
-            stmt.setString(2, userName);
-            stmt.setString(3, emailId);
-            stmt.setString(4, password);
+            stmt.setString(2, emailId);
+            stmt.setString(3, password);
+            stmt.setString(4, phoneNumber);
+            stmt.setString(5, gender);
+            stmt.setString(6, college);
             stmt.executeUpdate();
             status[0]="success";
-            status[1]=fullName;
 
             stmt = con.prepareStatement(updateCurrentUserQuery);
-            stmt.setString(1, userName);
-            stmt.setString(2, status[1]);
-            stmt.setString(3, "1");
+            stmt.setString(1, fullName);
+            stmt.setString(2, emailId);
+            stmt.setString(3, phoneNumber);
+            stmt.setString(4, gender);
+            stmt.setString(5, college);
             stmt.executeUpdate();
         }
         catch(Exception e){
