@@ -1,10 +1,12 @@
 package com.ClassroomDBMS.main.functions;
 
-import com.ClassroomDBMS.database.signIn.deleteAccount;
+import com.ClassroomDBMS.main.templates.TAprofiles.TAinfo;
 import com.ClassroomDBMS.main.windows.home.main;
+import com.ClassroomDBMS.database.signIn.deleteAccount;
+import com.ClassroomDBMS.database.signIn.userSignOut;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
 import com.ClassroomDBMS.main.templates.editProfile.*;
-import com.ClassroomDBMS.database.signIn.userSignOut;
+import com.ClassroomDBMS.main.templates.speakouts.notices;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -67,12 +69,10 @@ public class profile {
         profileSetting.setAlignment(Pos.TOP_CENTER);
 
         Button editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT,"Edit Profile");
-        editButton.setStyle("-fx-border-radius: 100");
         editButton.setCursor(Cursor.HAND);
 
         Button deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.CUT,"Delete Profile");
-        editButton.setStyle("-fx-border-radius: 100");
-        editButton.setCursor(Cursor.HAND);
+        deleteButton.setCursor(Cursor.HAND);
 
         profileSetting.getChildren().addAll(editButton,deleteButton);
 
@@ -156,10 +156,14 @@ public class profile {
         deleteButton.setOnAction(e-> {
             deleteAccount.deleteAccount(emailID.getText());
             main.window.setScene(loginHome.homeView());
+
+            findPeople.setTextFill(Color.web("#171717"));
+            speakOut.setTextFill(Color.web("#171717"));
+            TAs.setTextFill(Color.web("#171717"));
         });
 
-        findPeople.setOnMouseClicked(e-> {
-            peopleSearch ob = new peopleSearch();
+        peopleSearch ob = new peopleSearch();
+        findPeoplePane.setOnMouseClicked(e-> {
             optionData.setTop(ob.peoplesearch());
 
             findPeople.setTextFill(Color.web("red"));
@@ -167,25 +171,23 @@ public class profile {
             TAs.setTextFill(Color.web("#171717"));
         });
 
-        speakOut.setOnMouseClicked(e-> {
-//            peopleSearch ob = new peopleSearch();
-//            optionData.setTop(ob.peoplesearch());
+        speakOutPane.setOnMouseClicked(e-> {
+            optionData.setTop(notices.notices());
 
             findPeople.setTextFill(Color.web("#171717"));
             speakOut.setTextFill(Color.web("red"));
             TAs.setTextFill(Color.web("#171717"));
         });
 
-        TAs.setOnMouseClicked(e-> {
-//            peopleSearch ob = new peopleSearch();
-//            optionData.setTop(ob.peoplesearch());
+        TAsPane.setOnMouseClicked(e-> {
+            optionData.setTop(TAinfo.TAinfo());
 
             findPeople.setTextFill(Color.web("#171717"));
             speakOut.setTextFill(Color.web("#171717"));
             TAs.setTextFill(Color.web("red"));
         });
 
-        logout.setOnMouseClicked(e-> {
+        logoutPane.setOnMouseClicked(e-> {
             userSignOut.userSignOut(emailID.getText());
             main.window.setScene(loginHome.homeView());
         });
