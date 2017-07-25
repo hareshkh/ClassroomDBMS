@@ -8,8 +8,6 @@ import com.ClassroomDBMS.main.windows.home.main;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -40,11 +38,11 @@ public class updateUserDetails {
         BorderPane editprofile = new BorderPane();
 
         BorderPane general = new BorderPane();
-        general.setPadding(new Insets(20,100,30,100));
+        general.setPadding(new Insets(10,100,30,100));
 
         VBox generalVB = new VBox(15);
         generalVB.setAlignment(Pos.TOP_LEFT);
-        generalVB.setPadding(new Insets(10,0,10,0));
+        generalVB.setPadding(new Insets(0,0,10,0));
 
         Label generalLabel = new Label("Save details: ");
         generalLabel.setFont(new Font("Cambria", 25));
@@ -142,11 +140,11 @@ public class updateUserDetails {
         /////////////////////////////////////////////////////////////////////////////////////
 
         BorderPane password = new BorderPane();
-        password.setPadding(new Insets(20,100,50,100));
+        password.setPadding(new Insets(0,100,50,100));
 
         VBox passwordVB = new VBox(15);
         passwordVB.setAlignment(Pos.TOP_LEFT);
-        passwordVB.setPadding(new Insets(10,0,10,0));
+        passwordVB.setPadding(new Insets(0,0,10,0));
 
         Label passwordLabel = new Label("Update Password: ");
         passwordLabel.setFont(new Font("Cambria", 25));

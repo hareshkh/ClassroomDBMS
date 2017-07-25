@@ -3,6 +3,7 @@ package com.ClassroomDBMS.main.functions;
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
 import com.ClassroomDBMS.main.templates.editProfile.*;
+import com.ClassroomDBMS.database.signIn.userSignOut;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -166,6 +167,11 @@ public class profile {
             findPeople.setTextFill(Color.web("#171717"));
             speakOut.setTextFill(Color.web("#171717"));
             TAs.setTextFill(Color.web("red"));
+        });
+
+        logout.setOnMouseClicked(e-> {
+            userSignOut.userSignOut(emailID.getText());
+            main.window.setScene(loginHome.homeView());
         });
 
         userOptions.setLeft(optionDetails);
