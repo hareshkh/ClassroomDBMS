@@ -6,6 +6,9 @@ import com.ClassroomDBMS.database.updateProfile.*;
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -18,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,9 +40,9 @@ public class updateUserDetails {
         BorderPane profile = new BorderPane();
 
         BorderPane general = new BorderPane();
-        general.setPadding(new Insets(50,60,30,60));
+        general.setPadding(new Insets(20,100,30,100));
 
-        VBox generalVB = new VBox(25);
+        VBox generalVB = new VBox(15);
         generalVB.setAlignment(Pos.TOP_LEFT);
         generalVB.setPadding(new Insets(10,0,10,0));
 
@@ -102,10 +106,31 @@ public class updateUserDetails {
             else if(college.getText().isEmpty())
                 errorIngeneral.setText("College Name can't be set empty");
             else{
-                errorIngeneral.setTextFill(Color.web("green"));
-                errorIngeneral.setText("Should update now");
-//                generalUpdate
+                String status = generalUpdate.generalUpdate(currentUserDetail[2],fullName.getText(),emailId.getText(),phoneNumber.getText(), college.getText());
+
+                if (status.equals("Success")){
+                    errorIngeneral.setTextFill(Color.web("green"));
+                    errorIngeneral.setText("Profile Saved Succcessfully");
+                }
+                else
+                    errorIngeneral.setText(status);
             }
+            Task<Void> sleeper = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+            };
+            sleeper.setOnSucceeded(ee-> {
+                errorIngeneral.setTextFill(Color.web("red"));
+                errorIngeneral.setText("");
+            });
+            new Thread(sleeper).start();
         });
 
         generalVB.getChildren().addAll(generalLabel, nameEmailLabel, phoneCollegeLabel, errorIngeneral, save);
@@ -114,9 +139,9 @@ public class updateUserDetails {
         /////////////////////////////////////////////////////////////////////////////////////
 
         BorderPane password = new BorderPane();
-        password.setPadding(new Insets(30,60,50,60));
+        password.setPadding(new Insets(20,100,50,100));
 
-        VBox passwordVB = new VBox(25);
+        VBox passwordVB = new VBox(15);
         passwordVB.setAlignment(Pos.TOP_LEFT);
         passwordVB.setPadding(new Insets(10,0,10,0));
 
@@ -161,10 +186,32 @@ public class updateUserDetails {
             else if(!newPass.getText().equals(confirmPass.getText()))
                 errorInpassword.setText("New and confirm password don't match");
             else{
-                errorInpassword.setTextFill(Color.web("green"));
-                errorInpassword.setText("Should update now");
-//                passwordUpdate
+                String status = passwordUpdate.passwordUpdate(currentUserDetail[2],oldPass.getText(),newPass.getText());
+
+                if (status.equals("Success")){
+                    errorInpassword.setTextFill(Color.web("green"));
+                    errorInpassword.setText("Password Update successful.");
+                }
+                else
+                    errorInpassword.setText(status);
             }
+
+            Task<Void> sleeper = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+            };
+            sleeper.setOnSucceeded(ee-> {
+                errorInpassword.setTextFill(Color.web("red"));
+                errorInpassword.setText("");
+            });
+            new Thread(sleeper).start();
         });
 
         passwordVB.getChildren().addAll(passwordLabel, oldNewConfirmpasswordLabel, errorInpassword, update);

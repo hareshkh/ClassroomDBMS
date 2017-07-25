@@ -8,6 +8,7 @@ import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -57,6 +58,7 @@ public class profile {
 
         Button editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT,"Edit Profile");
         editButton.setStyle("-fx-border-radius: 100");
+        editButton.setCursor(Cursor.HAND);
 
         userData.getChildren().addAll(logo,fullName,emailID,college,editButton);
         userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 2 0;-fx-underline: true;");
@@ -76,6 +78,7 @@ public class profile {
         StackPane findPeoplePane = new StackPane(findPeople);
         findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
         findPeoplePane.setStyle("-fx-background-color: grey");
+        findPeoplePane.setCursor(Cursor.HAND);
 
         Label speakOut = GlyphsDude.createIconLabel( FontAwesomeIcon.WECHAT,
                 "  SpeakOut",
@@ -88,6 +91,7 @@ public class profile {
         StackPane speakOutPane = new StackPane(speakOut);
         speakOutPane.setAlignment(Pos.BASELINE_LEFT);
         speakOutPane.setStyle("-fx-background-color: grey");
+        speakOutPane.setCursor(Cursor.HAND);
 
         Label TAs = GlyphsDude.createIconLabel( FontAwesomeIcon.USERS,
                 "  Teaching Assistant",
@@ -100,6 +104,7 @@ public class profile {
         StackPane TAsPane = new StackPane(TAs);
         TAsPane.setAlignment(Pos.BASELINE_LEFT);
         TAsPane.setStyle("-fx-background-color: grey");
+        TAs.setCursor(Cursor.HAND);
 
         buttons.getChildren().addAll(findPeoplePane, speakOutPane, TAsPane);
         options.setCenter(buttons);
@@ -115,6 +120,7 @@ public class profile {
         StackPane logoutPane = new StackPane(logout);
         logoutPane.setAlignment(Pos.BASELINE_LEFT);
         logoutPane.setStyle("-fx-background-color: grey");
+        logoutPane.setCursor(Cursor.HAND);
 
         options.setBottom(logoutPane);
         optionDetails.setCenter(options);
@@ -122,6 +128,7 @@ public class profile {
         BorderPane optionData = new BorderPane();
 
         editButton.setOnAction(e-> {
+            e.consume();
             updateUserDetails ob = new updateUserDetails();
             optionData.setTop(ob.updateUserDetails());
 
