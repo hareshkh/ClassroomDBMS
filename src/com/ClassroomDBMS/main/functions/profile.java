@@ -1,6 +1,8 @@
 package com.ClassroomDBMS.main.functions;
 
 import com.ClassroomDBMS.main.windows.home.main;
+import com.ClassroomDBMS.main.templates.search.peopleSearch;
+
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
@@ -8,7 +10,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -18,10 +19,11 @@ import javafx.scene.text.Font;
 public class profile {
 
     public static Scene main(String[] profileDetails){
-        SplitPane userOptions = new SplitPane();
+        BorderPane userOptions = new BorderPane();
 
-        StackPane optionDetails = new StackPane();
+        BorderPane optionDetails = new BorderPane();
         optionDetails.setStyle("-fx-background-color: #171717");
+        optionDetails.setPrefWidth(220);
 
         BorderPane options = new BorderPane();
         VBox userData = new VBox(10);
@@ -105,14 +107,17 @@ public class profile {
         logoutPane.setStyle("-fx-background-color: grey");
 
         options.setBottom(logoutPane);
-        optionDetails.getChildren().add(options);
+        optionDetails.setCenter(options);
 
-        StackPane optionData = new StackPane(new Label("Data her"));
+        BorderPane optionData = new BorderPane();
 
-        userOptions.getItems().addAll(optionDetails, optionData);
-        userOptions.setResizableWithParent(optionDetails,Boolean.FALSE);
-        optionData.maxWidthProperty().bind(userOptions.widthProperty().multiply(0.7));
-        optionData.minWidthProperty().bind(userOptions.widthProperty().multiply(0.7));
+        findPeople.setOnMouseClicked(e-> {
+            peopleSearch ob = new peopleSearch();
+            optionData.setTop(ob.peoplesearch());
+        });
+
+        userOptions.setLeft(optionDetails);
+        userOptions.setCenter(optionData);
 
         Scene scene = new Scene(userOptions,800,500);
         scene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
