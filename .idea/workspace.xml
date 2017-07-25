@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cb4f0844-a678-4a9f-a5f2-332a5ee99952" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/peopleSearch.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/peopleSearch.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="29" column="50" lean-forward="true" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
+            <state relative-caret-position="370">
+              <caret line="54" column="32" lean-forward="false" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="peopleSearch.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="peopleSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/peopleSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="591">
+              <caret line="68" column="61" lean-forward="true" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,8 +70,8 @@
       <file leaf-file-name="searchResult.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/searchResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+            <state relative-caret-position="68">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,9 +128,9 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/searchResult.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/peopleSearch.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/peopleSearch/searchByKeyword.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/searchResult.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/peopleSearch.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java" />
       </list>
     </option>
   </component>
@@ -961,6 +962,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/searchResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/peopleSearch/searchByKeyword.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -971,30 +982,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="29" column="50" lean-forward="true" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/searchResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/search/peopleSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="591">
+          <caret line="68" column="61" lean-forward="true" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="54" column="32" lean-forward="false" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

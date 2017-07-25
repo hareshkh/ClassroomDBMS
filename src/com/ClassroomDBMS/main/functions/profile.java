@@ -8,6 +8,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -27,7 +28,7 @@ public class profile {
 
         BorderPane options = new BorderPane();
         VBox userData = new VBox(10);
-        userData.setPadding(new Insets(0,0,60,0));
+        userData.setPadding(new Insets(0,0,20,0));
         userData.setAlignment(Pos.TOP_CENTER);
 
         Label userLOGO = GlyphsDude.createIconLabel( FontAwesomeIcon.USER_SECRET,
@@ -51,9 +52,13 @@ public class profile {
         Label college = new Label(profileDetails[3]+",  "+profileDetails[5]);
         college.setFont(new Font("Cambria", 15));
         college.setTextFill(Color.web("#ededed"));
+        college.setWrapText(true);
 
-        userData.getChildren().addAll(logo,fullName,emailID,college);
-        userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 3 0;-fx-underline: true;");
+        Button editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT,"Edit Profile");
+        editButton.setStyle("-fx-border-radius: 100");
+
+        userData.getChildren().addAll(logo,fullName,emailID,college,editButton);
+        userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 2 0;-fx-underline: true;");
 
         options.setTop(userData);
 
@@ -68,6 +73,7 @@ public class profile {
         findPeople.setTextFill(Color.web("#171717"));
         findPeople.setPadding(new Insets(10));
         StackPane findPeoplePane = new StackPane(findPeople);
+        findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
         findPeoplePane.setStyle("-fx-background-color: grey");
 
         Label speakOut = GlyphsDude.createIconLabel( FontAwesomeIcon.WECHAT,
@@ -79,6 +85,7 @@ public class profile {
         speakOut.setTextFill(Color.web("#171717"));
         speakOut.setPadding(new Insets(10));
         StackPane speakOutPane = new StackPane(speakOut);
+        speakOutPane.setAlignment(Pos.BASELINE_LEFT);
         speakOutPane.setStyle("-fx-background-color: grey");
 
         Label TAs = GlyphsDude.createIconLabel( FontAwesomeIcon.USERS,
@@ -90,6 +97,7 @@ public class profile {
         TAs.setTextFill(Color.web("#171717"));
         TAs.setPadding(new Insets(10));
         StackPane TAsPane = new StackPane(TAs);
+        TAsPane.setAlignment(Pos.BASELINE_LEFT);
         TAsPane.setStyle("-fx-background-color: grey");
 
         buttons.getChildren().addAll(findPeoplePane, speakOutPane, TAsPane);
@@ -104,6 +112,7 @@ public class profile {
         logout.setTextFill(Color.web("#171717"));
         logout.setPadding(new Insets(10));
         StackPane logoutPane = new StackPane(logout);
+        logoutPane.setAlignment(Pos.BASELINE_LEFT);
         logoutPane.setStyle("-fx-background-color: grey");
 
         options.setBottom(logoutPane);
@@ -114,6 +123,28 @@ public class profile {
         findPeople.setOnMouseClicked(e-> {
             peopleSearch ob = new peopleSearch();
             optionData.setTop(ob.peoplesearch());
+
+            findPeople.setTextFill(Color.web("red"));
+            speakOut.setTextFill(Color.web("#171717"));
+            TAs.setTextFill(Color.web("#171717"));
+        });
+
+        speakOut.setOnMouseClicked(e-> {
+//            peopleSearch ob = new peopleSearch();
+//            optionData.setTop(ob.peoplesearch());
+
+            findPeople.setTextFill(Color.web("#171717"));
+            speakOut.setTextFill(Color.web("red"));
+            TAs.setTextFill(Color.web("#171717"));
+        });
+
+        TAs.setOnMouseClicked(e-> {
+//            peopleSearch ob = new peopleSearch();
+//            optionData.setTop(ob.peoplesearch());
+
+            findPeople.setTextFill(Color.web("#171717"));
+            speakOut.setTextFill(Color.web("#171717"));
+            TAs.setTextFill(Color.web("red"));
         });
 
         userOptions.setLeft(optionDetails);

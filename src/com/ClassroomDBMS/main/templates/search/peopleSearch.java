@@ -65,8 +65,8 @@ public class peopleSearch {
             VBox results = searchByKeyword.searchByKeyword(searchBox.getText());
             ScrollPane searchedStudents = new ScrollPane(results);
             searchedStudents.setFitToWidth(true);
-            searchedStudents.setPrefViewportHeight(main.window.getHeight()-200);
-            main.window.heightProperty().addListener(ee-> searchedStudents.setPrefViewportHeight(main.window.getHeight()-200));
+            searchedStudents.setMaxHeight(main.window.getHeight()-200);
+            main.window.heightProperty().addListener(ee-> searchedStudents.setMaxHeight(main.window.getHeight()-200));
             frame.setCenter(searchedStudents);
         });
 
