@@ -2,6 +2,7 @@ package com.ClassroomDBMS.main.functions;
 
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
+import com.ClassroomDBMS.main.templates.editProfile.*;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -119,6 +120,15 @@ public class profile {
         optionDetails.setCenter(options);
 
         BorderPane optionData = new BorderPane();
+
+        editButton.setOnAction(e-> {
+            updateUserDetails ob = new updateUserDetails();
+            optionData.setTop(ob.updateUserDetails());
+
+            findPeople.setTextFill(Color.web("#171717"));
+            speakOut.setTextFill(Color.web("#171717"));
+            TAs.setTextFill(Color.web("#171717"));
+        });
 
         findPeople.setOnMouseClicked(e-> {
             peopleSearch ob = new peopleSearch();

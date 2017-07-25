@@ -30,7 +30,6 @@ public class peopleSearch {
         searchVB.setPadding(new Insets(10,0,10,0));
 
         Label searchLabel = new Label("Find people: ");
-        searchLabel.setTextFill(Color.web("#fff"));
         searchLabel.setFont(new Font("Cambria", 25));
         searchLabel.setTextFill(Color.web("#5a5a5a"));
 
@@ -51,9 +50,8 @@ public class peopleSearch {
         });
 
         Button searchButton = new Button("Search");
-        searchButton.setStyle("-fx-focus-color: transparent;");
         searchButton.setFont(new Font("Cambria", 18));
-        searchButton.setStyle("-fx-background-color: #6ac045;");
+        searchButton.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent;");
         searchButton.setTextFill(Color.web("#fff"));
         searchButton.setCursor(Cursor.HAND);
 
