@@ -25,22 +25,10 @@ public class peopleSearch {
         BorderPane frame = new BorderPane();
         frame.setPadding(new Insets(50,60,0,60));
 
-        VBox searchVB = new VBox(15);
-        searchVB.setAlignment(Pos.TOP_CENTER);
-        searchVB.setPadding(new Insets(10,0,10,0));
-
-        Label searchLabel = new Label("Find people: ");
-        searchLabel.setFont(new Font("Cambria", 25));
-        searchLabel.setTextFill(Color.web("#5a5a5a"));
-
-        //=================================================================================
-        HBox searchRow = new HBox(15);
-        searchRow.setAlignment(Pos.TOP_CENTER);
-
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search by name, mail id, phone no., college .");
-        searchBox.setStyle("-fx-focus-color: transparent;");
-        searchBox.setPrefColumnCount(30);
+        searchBox.setStyle("-fx-focus-color: transparent;-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 100; -fx-text-inner-color: #fff;");
+        searchBox.setPrefWidth(100);
         searchBox.setPrefHeight(35);
         searchBox.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
             if(newValue && firstTime.get()){
@@ -48,27 +36,17 @@ public class peopleSearch {
                 firstTime.setValue(false); // Variable value changed for future references
             }
         });
-
-        Button searchButton = new Button("Search");
-        searchButton.setFont(new Font("Cambria", 18));
-        searchButton.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent;");
-        searchButton.setTextFill(Color.web("#fff"));
-        searchButton.setCursor(Cursor.HAND);
-
-        searchRow.getChildren().addAll(searchBox,searchButton);
-
-        searchVB.getChildren().addAll(searchLabel,searchRow);
-
-        searchButton.setOnAction(e-> {
-            VBox results = searchByKeyword.searchByKeyword(searchBox.getText());
+        searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            VBox results = searchByKeyword.searchByKeyword(newValue);
+            results.setPadding(new Insets(10,0,0,10));
             ScrollPane searchedStudents = new ScrollPane(results);
             searchedStudents.setFitToWidth(true);
-            searchedStudents.setMaxHeight(main.window.getHeight()-200);
-            main.window.heightProperty().addListener(ee-> searchedStudents.setMaxHeight(main.window.getHeight()-200));
+            searchedStudents.setMaxHeight(main.window.getHeight()-170);
+            main.window.heightProperty().addListener(ee-> searchedStudents.setMaxHeight(main.window.getHeight()-170));
             frame.setCenter(searchedStudents);
         });
 
-        frame.setTop(searchVB);
+        frame.setTop(searchBox);
 
         return  frame;
     }

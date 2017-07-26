@@ -27,13 +27,19 @@ public class notices {
         messageProfile = new BorderPane();
         messageProfile.setPadding(new Insets(30,60,0,60));
 
-        HBox headerTitle = new HBox();
-        headerTitle.setPadding(new Insets(0,0,30,0));
-        headerTitle.setAlignment(Pos.TOP_CENTER);
         Label header = new Label("Classroom DBMS Announcements");
+        header.setAlignment(Pos.TOP_CENTER);
         header.setFont(new Font("Cambria", 32));
         header.setTextFill(Color.web("#ededed"));
-        headerTitle.getChildren().addAll(header);
+
+        TextField searchNotice = new TextField();
+        searchNotice.setPromptText("Search by keyword");
+        searchNotice.setPrefColumnCount(10);
+        searchNotice.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
+
+        BorderPane headerTitle = new BorderPane(header,null,searchNotice,null,null);
+        headerTitle.setPadding(new Insets(0,0,30,0));
+
         messageProfile.setTop(headerTitle);
 
         messages = new BorderPane();
@@ -49,7 +55,7 @@ public class notices {
         scroller = new ScrollPane(messages);
         scroller.setFitToWidth(true);
         scroller.setVvalue(1.0);
-        scroller.vvalueProperty().bind(messageProfile.heightProperty());
+        scroller.vvalueProperty().bind(fetchedMessages.heightProperty());
 
         messageProfile.setCenter(scroller);
 
