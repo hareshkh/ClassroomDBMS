@@ -23,7 +23,6 @@ public class addNewTutorial {
             stmt.setString(3, emailId);
             stmt.setString(4, answer);
 
-            System.out.println("stmt : "+stmt);
             stmt.executeUpdate();
             status ="success";
         }
