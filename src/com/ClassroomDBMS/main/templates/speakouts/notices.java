@@ -1,5 +1,6 @@
 package com.ClassroomDBMS.main.templates.speakouts;
 
+import com.ClassroomDBMS.database.peopleSearch.searchByKeyword;
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.database.speakOutMessages.*;
 
@@ -23,6 +24,7 @@ public class notices {
     public static BorderPane messages;
 
     public static BorderPane notices(String emailId){
+        VBox fetchedMessages = new VBox(15);
 
         messageProfile = new BorderPane();
         messageProfile.setPadding(new Insets(30,60,0,60));
@@ -36,6 +38,10 @@ public class notices {
         searchNotice.setPromptText("Search by keyword");
         searchNotice.setPrefColumnCount(10);
         searchNotice.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
+        searchNotice.textProperty().addListener((observable, oldValue, newValue) -> {
+            fetchedMessages.getChildren().clear();
+            fetchedMessages.getChildren().add(keywordSearch.keywordSearch(emailId,newValue));
+        });
 
         BorderPane headerTitle = new BorderPane(header,null,searchNotice,null,null);
         headerTitle.setPadding(new Insets(0,0,30,0));
@@ -47,7 +53,6 @@ public class notices {
         messages.setPrefHeight(main.window.getHeight()-220);
         main.window.heightProperty().addListener(e-> messages.setPrefHeight(main.window.getHeight()-220));
 
-        VBox fetchedMessages = new VBox(15);
         fetchedMessages.getChildren().add(fetchLatest.fetchlatest(emailId));
 
         messages.setTop(fetchedMessages);
