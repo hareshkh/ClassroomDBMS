@@ -14,15 +14,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import java.util.Optional;
 
 public class profile {
 
@@ -157,8 +157,20 @@ public class profile {
         });
 
         deleteButton.setOnAction(e-> {
-            deleteAccount.deleteAccount(emailID.getText());
-            main.window.setScene(loginHome.homeView());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Profile Delete Confirmation");
+            alert.setHeaderText("All your user details will be lost. Still your announcements could be seen");
+            alert.setContentText("Are you ok with this?");
+
+            try{
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK)
+                    deleteAccount.deleteAccount(emailID.getText());
+                    main.window.setScene(loginHome.homeView());
+            }
+            catch (Exception exe){
+                exe.getMessage();
+            }
         });
 
         coursePane.setOnMouseClicked(e-> {

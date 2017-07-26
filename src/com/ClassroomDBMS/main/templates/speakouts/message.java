@@ -9,6 +9,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -85,11 +86,22 @@ public class message {
 
     }
 
-    public static BorderPane errorformatmessage(String errorMessage){
+    public static BorderPane errorformatmessage(){
 
         BorderPane notice = new BorderPane();
 
-        notice.setTop(new Label(errorMessage));
+        StackPane results = new StackPane();
+        results.setStyle("-fx-background-color: #171717");
+        results.setPadding(new Insets(10,0,10,0));
+
+        Label result = new Label("Sorry. No Results found on DB search");
+        result.setFont(new Font("Cambria", 20));
+        result.setTextFill(Color.web("#fff"));
+        result.setPadding(new Insets(10));
+
+        results.getChildren().add(result);
+
+        notice.setCenter(results);
 
         return notice;
 

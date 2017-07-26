@@ -37,7 +37,7 @@ public class fetchLatest {
             }
 
         } catch (Exception e) {
-            noticeList.getChildren().add(message.errorformatmessage(e.getMessage()));
+            noticeList.getChildren().add(message.errorformatmessage());
         } finally {
             DBUtils.closeAll(rs, stmt, con);
             return noticeList;

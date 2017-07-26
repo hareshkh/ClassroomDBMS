@@ -1,6 +1,7 @@
 package com.ClassroomDBMS.database.speakOutMessages;
 
 import com.ClassroomDBMS.database.utils.DBUtils;
+import com.ClassroomDBMS.main.templates.search.searchResult;
 import com.ClassroomDBMS.main.templates.speakouts.message;
 import javafx.scene.layout.VBox;
 
@@ -24,6 +25,14 @@ public class keywordSearch {
             con = DBUtils.getConnection();
             stmt = con.prepareStatement(query);
             rs = stmt.executeQuery();
+
+            rs.last();
+            int size = rs.getRow();
+            if (size==0)
+                noticeList.getChildren().add(message.errorformatmessage());
+
+            rs.beforeFirst();
+
             while (rs.next()){
                 String timestamp = rs.getString("timestamp");
                 String emailId = rs.getString("emailId");
@@ -36,7 +45,7 @@ public class keywordSearch {
             }
 
         } catch (Exception e) {
-            noticeList.getChildren().add(message.errorformatmessage(e.getMessage()));
+            noticeList.getChildren().add(message.errorformatmessage());
         } finally {
             DBUtils.closeAll(rs, stmt, con);
             return noticeList;
