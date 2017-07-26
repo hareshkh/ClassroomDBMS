@@ -18,9 +18,13 @@ import java.util.Date;
 
 public class notices {
 
+    public static ScrollPane scroller;
+    public static BorderPane messageProfile;
+    public static BorderPane messages;
+
     public static BorderPane notices(String emailId){
 
-        BorderPane messageProfile = new BorderPane();
+        messageProfile = new BorderPane();
         messageProfile.setPadding(new Insets(30,60,0,60));
 
         HBox headerTitle = new HBox();
@@ -32,7 +36,7 @@ public class notices {
         headerTitle.getChildren().addAll(header);
         messageProfile.setTop(headerTitle);
 
-        BorderPane messages = new BorderPane();
+        messages = new BorderPane();
         messages.setStyle("-fx-background-color: transparent");
         messages.setPrefHeight(main.window.getHeight()-220);
         main.window.heightProperty().addListener(e-> messages.setPrefHeight(main.window.getHeight()-220));
@@ -42,7 +46,7 @@ public class notices {
 
         messages.setTop(fetchedMessages);
 
-        ScrollPane scroller = new ScrollPane(messages);
+        scroller = new ScrollPane(messages);
         scroller.setFitToWidth(true);
         scroller.setVvalue(1.0);
         scroller.vvalueProperty().bind(messageProfile.heightProperty());
@@ -81,7 +85,6 @@ public class notices {
             }
             else
                 error.setText(status);
-            scroller.setVvalue(messageProfile.getHeight());
         });
 
         mymessageCorner.setLeft(newMessage);

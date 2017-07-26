@@ -30,11 +30,11 @@ public class message {
                 "18",
                 ContentDisplay.LEFT );
         messageOwner.setFont(new Font("Cambria", 18));
-        messageOwner.setTextFill(Color.web("#000"));
+        messageOwner.setTextFill(Color.web("#ccc"));
 
         Label time = new Label(timeStampChangeFormat(timestamp));
         time.setFont(new Font("Cambria", 12));
-        time.setTextFill(Color.web("#5a5a5a"));
+        time.setTextFill(Color.web("#9c9c9c"));
         time.setAlignment(Pos.BASELINE_RIGHT);
         time.setPadding(new Insets(5,0,0,0));
 
@@ -49,7 +49,6 @@ public class message {
         main.window.widthProperty().addListener(e-> message.setPrefWidth(main.window.getWidth()-450));
 
         noticeVB.getChildren().addAll(htimeHB,message);
-
         notice.setLeft(noticeVB);
 
         return notice;
@@ -66,7 +65,7 @@ public class message {
 
         Label time = new Label(timeStampChangeFormat(timestamp));
         time.setFont(new Font("Cambria", 12));
-        time.setTextFill(Color.web("#5a5a5a"));
+        time.setTextFill(Color.web("#9c9c9c"));
         time.setPadding(new Insets(5,0,0,0));
 
         Label message = new Label(noticeMessage);

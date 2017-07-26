@@ -1,5 +1,6 @@
 package com.ClassroomDBMS.main.functions;
 
+import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.main.windows.login.userLogin;
 import com.ClassroomDBMS.main.windows.signUp.userSignUp;
 
@@ -17,6 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class loginHome {
+
+    public  static String image;
 
     public static Scene homeView(){
 
@@ -72,6 +75,11 @@ public class loginHome {
 
         Scene scene = new Scene(headerlayout,800,500);
         scene.getStylesheets().add(loginHome.class.getResource("../resources/css/main.css").toExternalForm());
+
+        image = loginHome.class.getResource("../resources/images/splash.jpg").toExternalForm();
+        headerlayout.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-position: center center; " +
+                "-fx-background-repeat: stretch;");
 
         return  scene;
     }

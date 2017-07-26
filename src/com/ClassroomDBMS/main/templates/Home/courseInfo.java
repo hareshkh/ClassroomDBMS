@@ -1,8 +1,8 @@
-package com.ClassroomDBMS.main.templates.TAprofiles;
+package com.ClassroomDBMS.main.templates.Home;
 
 import javafx.scene.layout.BorderPane;
 
-public class TAinfo {
+public class courseInfo {
 
     public static BorderPane TAinfo(){
 

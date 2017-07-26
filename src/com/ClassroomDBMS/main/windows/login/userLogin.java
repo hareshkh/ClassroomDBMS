@@ -49,7 +49,7 @@ public class userLogin {
         loginPane.setTop(loginHeader);
 
         VBox vb = new VBox(15);
-        vb.setPadding(new Insets(50,20,-20,20));
+        vb.setPadding(new Insets(30,20,-20,20));
 
         TextField username = new TextField();
         username.setPromptText("full name or email address");
@@ -99,7 +99,7 @@ public class userLogin {
 
         loginPane.setBottom(loginRow);
 
-        Scene loginScene = new Scene(loginPane,400,300);
+        Scene loginScene = new Scene(loginPane,400,280);
         loginScene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.ENTER),
                 () -> loginButton.fire()

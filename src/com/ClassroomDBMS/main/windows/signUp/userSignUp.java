@@ -38,7 +38,7 @@ public class userSignUp {
         signUpStage.initModality(Modality.APPLICATION_MODAL);
 
         BorderPane signUpPane = new BorderPane();
-        signUpPane.setPadding(new Insets(50,20,20,20));
+        signUpPane.setPadding(new Insets(30,20,20,20));
 
         HBox signUpHeader = new HBox();
 
@@ -51,7 +51,7 @@ public class userSignUp {
         signUpPane.setTop(signUpHeader);
 
         VBox vb = new VBox(15);
-        vb.setPadding(new Insets(50,20,-20,20));
+        vb.setPadding(new Insets(30,20,-20,20));
 
         TextField fullName = new TextField();
         fullName.setPromptText("Full Name");
@@ -141,7 +141,7 @@ public class userSignUp {
 
         signUpPane.setBottom(signUpRow);
 
-        Scene SignUpScene = new Scene(signUpPane,400,520);
+        Scene SignUpScene = new Scene(signUpPane,400,480);
         SignUpScene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.ENTER),
                 () -> signUpButton.fire()

@@ -1,6 +1,6 @@
 package com.ClassroomDBMS.main.functions;
 
-import com.ClassroomDBMS.main.templates.TAprofiles.TAinfo;
+import com.ClassroomDBMS.main.templates.Home.courseInfo;
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.database.signIn.deleteAccount;
 import com.ClassroomDBMS.database.signIn.userSignOut;
@@ -29,6 +29,9 @@ public class profile {
     public static Label fullName;
     public static Label emailID;
     public static Label phoneNumbercollege;
+    public static Label course;
+    public static Label findPeople;
+    public static Label speakOut;
 
     public static Scene main(String[] profileDetails){
         BorderPane userOptions = new BorderPane();
@@ -83,7 +86,20 @@ public class profile {
 
         VBox buttons = new VBox(15);
 
-        Label findPeople = GlyphsDude.createIconLabel( FontAwesomeIcon.SEARCH,
+        course = GlyphsDude.createIconLabel( FontAwesomeIcon.USERS,
+                "  Home",
+                "20",
+                "18",
+                ContentDisplay.LEFT );
+        course.setFont(new Font("Cambria", 20));
+        course.setTextFill(Color.web("#171717"));
+        course.setPadding(new Insets(10));
+        StackPane coursePane = new StackPane(course);
+        coursePane.setAlignment(Pos.BASELINE_LEFT);
+        coursePane.setStyle("-fx-background-color: grey");
+        coursePane.setCursor(Cursor.HAND);
+
+        findPeople = GlyphsDude.createIconLabel( FontAwesomeIcon.SEARCH,
                 "  Find Students",
                 "20",
                 "18",
@@ -96,7 +112,7 @@ public class profile {
         findPeoplePane.setStyle("-fx-background-color: grey");
         findPeoplePane.setCursor(Cursor.HAND);
 
-        Label speakOut = GlyphsDude.createIconLabel( FontAwesomeIcon.WECHAT,
+        speakOut = GlyphsDude.createIconLabel( FontAwesomeIcon.WECHAT,
                 "  SpeakOut",
                 "20",
                 "18",
@@ -109,20 +125,7 @@ public class profile {
         speakOutPane.setStyle("-fx-background-color: grey");
         speakOutPane.setCursor(Cursor.HAND);
 
-        Label TAs = GlyphsDude.createIconLabel( FontAwesomeIcon.USERS,
-                "  Teaching Assistant",
-                "20",
-                "18",
-                ContentDisplay.LEFT );
-        TAs.setFont(new Font("Cambria", 20));
-        TAs.setTextFill(Color.web("#171717"));
-        TAs.setPadding(new Insets(10));
-        StackPane TAsPane = new StackPane(TAs);
-        TAsPane.setAlignment(Pos.BASELINE_LEFT);
-        TAsPane.setStyle("-fx-background-color: grey");
-        TAs.setCursor(Cursor.HAND);
-
-        buttons.getChildren().addAll(findPeoplePane, speakOutPane, TAsPane);
+        buttons.getChildren().addAll(coursePane, findPeoplePane, speakOutPane);
         options.setCenter(buttons);
 
         Label logout = GlyphsDude.createIconLabel( FontAwesomeIcon.SIGN_OUT,
@@ -143,48 +146,36 @@ public class profile {
 
         BorderPane optionData = new BorderPane();
 
+        optionData.setTop(courseInfo.TAinfo());
+        toggleTextColors("red", "#171717","#171717");
+
         editButton.setOnAction(e-> {
             e.consume();
             updateUserDetails ob = new updateUserDetails();
             optionData.setTop(ob.updateUserDetails());
-
-            findPeople.setTextFill(Color.web("#171717"));
-            speakOut.setTextFill(Color.web("#171717"));
-            TAs.setTextFill(Color.web("#171717"));
+            toggleTextColors("#171717", "#171717","#171717");
         });
 
         deleteButton.setOnAction(e-> {
             deleteAccount.deleteAccount(emailID.getText());
             main.window.setScene(loginHome.homeView());
+        });
 
-            findPeople.setTextFill(Color.web("#171717"));
-            speakOut.setTextFill(Color.web("#171717"));
-            TAs.setTextFill(Color.web("#171717"));
+        coursePane.setOnMouseClicked(e-> {
+            optionData.setTop(courseInfo.TAinfo());
+            toggleTextColors("red", "#171717","#171717");
         });
 
         peopleSearch ob = new peopleSearch();
         findPeoplePane.setOnMouseClicked(e-> {
             optionData.setTop(ob.peoplesearch());
-
-            findPeople.setTextFill(Color.web("red"));
-            speakOut.setTextFill(Color.web("#171717"));
-            TAs.setTextFill(Color.web("#171717"));
+            toggleTextColors("#171717", "red","#171717");
         });
 
         speakOutPane.setOnMouseClicked(e-> {
             optionData.setTop(notices.notices(emailID.getText()));
-
-            findPeople.setTextFill(Color.web("#171717"));
-            speakOut.setTextFill(Color.web("red"));
-            TAs.setTextFill(Color.web("#171717"));
-        });
-
-        TAsPane.setOnMouseClicked(e-> {
-            optionData.setTop(TAinfo.TAinfo());
-
-            findPeople.setTextFill(Color.web("#171717"));
-            speakOut.setTextFill(Color.web("#171717"));
-            TAs.setTextFill(Color.web("red"));
+            toggleTextColors("#171717","#171717","red");
+            notices.messages.requestFocus();
         });
 
         logoutPane.setOnMouseClicked(e-> {
@@ -197,6 +188,22 @@ public class profile {
 
         Scene scene = new Scene(userOptions,800,500);
         scene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
+
+        String image = profile.class.getResource("../resources/images/splash.jpg").toExternalForm();
+        optionData.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-position: center center; " +
+                "-fx-background-repeat: stretch;");
+        optionDetails.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-position: center center; " +
+                "-fx-background-repeat: stretch;");
+
         return scene;
+    }
+
+    public static void toggleTextColors(String courseColor, String findColor, String speakoutColor)
+    {
+        course.setTextFill(Color.web(courseColor));
+        findPeople.setTextFill(Color.web(findColor));
+        speakOut.setTextFill(Color.web(speakoutColor));
     }
 }
