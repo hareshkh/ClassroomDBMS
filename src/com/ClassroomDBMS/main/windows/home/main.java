@@ -32,7 +32,7 @@ public class main extends Application {
 
         window.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomDBMS.png")));
 
-        window.setMinWidth(800);
+        window.setMinWidth(850);
         window.setMinHeight(535);
         window.show();
         window.setOnCloseRequest(e->{System.exit(0);});

@@ -172,7 +172,7 @@ public class profile {
         });
 
         speakOutPane.setOnMouseClicked(e-> {
-            optionData.setTop(notices.notices());
+            optionData.setTop(notices.notices(emailID.getText()));
 
             findPeople.setTextFill(Color.web("#171717"));
             speakOut.setTextFill(Color.web("red"));
