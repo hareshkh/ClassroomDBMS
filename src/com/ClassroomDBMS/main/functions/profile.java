@@ -1,6 +1,7 @@
 package com.ClassroomDBMS.main.functions;
 
 import com.ClassroomDBMS.main.templates.Home.courseInfo;
+import com.ClassroomDBMS.main.templates.tutorialSubmission.submissions;
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.database.signIn.deleteAccount;
 import com.ClassroomDBMS.database.signIn.userSignOut;
@@ -32,6 +33,7 @@ public class profile {
     public static Label course;
     public static Label findPeople;
     public static Label speakOut;
+    public static Label submission;
 
     public static Scene main(String[] profileDetails){
         BorderPane userOptions = new BorderPane();
@@ -125,7 +127,20 @@ public class profile {
         speakOutPane.setStyle("-fx-background-color: grey");
         speakOutPane.setCursor(Cursor.HAND);
 
-        buttons.getChildren().addAll(coursePane, findPeoplePane, speakOutPane);
+        submission = GlyphsDude.createIconLabel( FontAwesomeIcon.UPLOAD,
+                "  Submission",
+                "20",
+                "18",
+                ContentDisplay.LEFT );
+        submission.setFont(new Font("Cambria", 20));
+        submission.setTextFill(Color.web("#171717"));
+        submission.setPadding(new Insets(10));
+        StackPane submissionPane = new StackPane(submission);
+        submissionPane.setAlignment(Pos.BASELINE_LEFT);
+        submissionPane.setStyle("-fx-background-color: grey");
+        submissionPane.setCursor(Cursor.HAND);
+
+        buttons.getChildren().addAll(coursePane, findPeoplePane, speakOutPane, submissionPane);
         options.setCenter(buttons);
 
         Label logout = GlyphsDude.createIconLabel( FontAwesomeIcon.SIGN_OUT,
@@ -147,16 +162,17 @@ public class profile {
         BorderPane optionData = new BorderPane();
 
         optionData.setTop(courseInfo.TAinfo());
-        toggleTextColors("red", "#171717","#171717");
+        toggleTextColors("red", "#171717","#171717","#171717");
 
         editButton.setOnAction(e-> {
             e.consume();
             updateUserDetails ob = new updateUserDetails();
             optionData.setTop(ob.updateUserDetails());
-            toggleTextColors("#171717", "#171717","#171717");
+            toggleTextColors("#171717", "#171717","#171717","#171717");
         });
 
         deleteButton.setOnAction(e-> {
+            toggleTextColors("#171717", "#171717","#171717","#171717");
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Profile Delete Confirmation");
             alert.setHeaderText("All your user details will be lost. Still your announcements could be seen");
@@ -175,19 +191,25 @@ public class profile {
 
         coursePane.setOnMouseClicked(e-> {
             optionData.setTop(courseInfo.TAinfo());
-            toggleTextColors("red", "#171717","#171717");
+            toggleTextColors("red", "#171717","#171717","#171717");
         });
 
         peopleSearch ob = new peopleSearch();
         findPeoplePane.setOnMouseClicked(e-> {
             optionData.setTop(ob.peoplesearch());
-            toggleTextColors("#171717", "red","#171717");
+            toggleTextColors("#171717", "red","#171717","#171717");
         });
 
         speakOutPane.setOnMouseClicked(e-> {
             optionData.setTop(notices.notices(emailID.getText()));
-            toggleTextColors("#171717","#171717","red");
+            toggleTextColors("#171717","#171717","red","#171717");
             notices.messages.requestFocus();
+        });
+
+        submissionPane.setOnMouseClicked(e-> {
+            optionData.setTop(submissions.tutorials(emailID.getText()));
+            toggleTextColors("#171717","#171717","#171717","red");
+            submissions.tutorials.requestFocus();
         });
 
         logoutPane.setOnMouseClicked(e-> {
@@ -212,10 +234,11 @@ public class profile {
         return scene;
     }
 
-    public static void toggleTextColors(String courseColor, String findColor, String speakoutColor)
+    public static void toggleTextColors(String courseColor, String findColor, String speakoutColor, String submissionColor)
     {
         course.setTextFill(Color.web(courseColor));
         findPeople.setTextFill(Color.web(findColor));
         speakOut.setTextFill(Color.web(speakoutColor));
+        submission.setTextFill(Color.web(submissionColor));
     }
 }

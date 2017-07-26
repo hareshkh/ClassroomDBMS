@@ -1,6 +1,5 @@
 package com.ClassroomDBMS.main.templates.speakouts;
 
-import com.ClassroomDBMS.database.peopleSearch.searchByKeyword;
 import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.database.speakOutMessages.*;
 
@@ -9,7 +8,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

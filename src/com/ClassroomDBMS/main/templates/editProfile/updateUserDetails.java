@@ -103,6 +103,8 @@ public class updateUserDetails {
                 errorIngeneral.setText("Incorrect mobile number");
             else if(college.getText().isEmpty())
                 errorIngeneral.setText("College Name can't be set empty");
+            else if(fullName.getText().equals(currentUserDetail[1]) && emailId.getText().equals(currentUserDetail[5]) && phoneNumber.getText().equals(currentUserDetail[3]) && college.getText().equals(currentUserDetail[5]))
+                errorIngeneral.setText("No changes made.");
             else{
                 String status = generalUpdate.generalUpdate(currentUserDetail[2],fullName.getText(),emailId.getText(),phoneNumber.getText(), college.getText());
 

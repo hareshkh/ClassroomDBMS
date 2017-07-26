@@ -36,14 +36,23 @@ public class peopleSearch {
                 firstTime.setValue(false); // Variable value changed for future references
             }
         });
+
+        VBox results = searchByKeyword.searchByKeyword("");
+        results.setPadding(new Insets(10,0,0,10));
+        ScrollPane searchedStudents = new ScrollPane(results);
+        searchedStudents.setFitToWidth(true);
+        searchedStudents.setMaxHeight(main.window.getHeight()-170);
+        main.window.heightProperty().addListener(ee-> searchedStudents.setMaxHeight(main.window.getHeight()-170));
+        frame.setCenter(searchedStudents);
+
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
-            VBox results = searchByKeyword.searchByKeyword(newValue);
-            results.setPadding(new Insets(10,0,0,10));
-            ScrollPane searchedStudents = new ScrollPane(results);
-            searchedStudents.setFitToWidth(true);
-            searchedStudents.setMaxHeight(main.window.getHeight()-170);
-            main.window.heightProperty().addListener(ee-> searchedStudents.setMaxHeight(main.window.getHeight()-170));
-            frame.setCenter(searchedStudents);
+            VBox newresults = searchByKeyword.searchByKeyword(newValue);
+            newresults.setPadding(new Insets(10,0,0,10));
+            ScrollPane newsearchedStudents = new ScrollPane(newresults);
+            newsearchedStudents.setFitToWidth(true);
+            newsearchedStudents.setMaxHeight(main.window.getHeight()-170);
+            main.window.heightProperty().addListener(ee-> newsearchedStudents.setMaxHeight(main.window.getHeight()-170));
+            frame.setCenter(newsearchedStudents);
         });
 
         frame.setTop(searchBox);
