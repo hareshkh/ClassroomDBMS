@@ -213,7 +213,7 @@ public class profile {
         });
 
         logoutPane.setOnMouseClicked(e-> {
-            userSignOut.userSignOut(emailID.getText());
+            userSignOut.userSignOut();
             main.window.setScene(loginHome.homeView());
         });
 
