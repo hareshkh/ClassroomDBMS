@@ -1,6 +1,7 @@
 package com.ClassroomDBMS.main.windows.home;
 
 import com.ClassroomDBMS.database.logIn.userLoggedIn;
+import com.ClassroomDBMS.main.functions.getMotherboardSN;
 import com.ClassroomDBMS.main.functions.loginHome;
 
 import com.ClassroomDBMS.main.functions.profile;
@@ -23,7 +24,8 @@ public class main extends Application {
         window=primaryStage;
         window.setTitle("Classroom DBMS");
 
-        String[] status = userLoggedIn.userLoggedIn();
+        String userID = getMotherboardSN.getMotherboardSN();
+        String[] status = userLoggedIn.userLoggedIn(userID);
 
         if (!status[0].equals("success"))
             window.setScene(loginHome.homeView());

@@ -2,6 +2,7 @@ package com.ClassroomDBMS.main.templates.editProfile;
 
 import com.ClassroomDBMS.database.logIn.userLoggedIn;
 import com.ClassroomDBMS.database.updateProfile.*;
+import com.ClassroomDBMS.main.functions.getMotherboardSN;
 import com.ClassroomDBMS.main.functions.profile;
 
 import com.ClassroomDBMS.main.windows.home.main;
@@ -33,7 +34,8 @@ public class updateUserDetails {
     final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
     public BorderPane updateUserDetails(){
-        String[] currentUserDetail = userLoggedIn.userLoggedIn();
+        String userID = getMotherboardSN.getMotherboardSN();
+        String[] currentUserDetail = userLoggedIn.userLoggedIn(userID);
 
         BorderPane editprofile = new BorderPane();
 
