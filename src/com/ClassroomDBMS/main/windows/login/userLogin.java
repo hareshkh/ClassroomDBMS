@@ -102,7 +102,7 @@ public class userLogin {
         Scene loginScene = new Scene(loginPane,400,280);
         loginScene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.ENTER),
-                () -> loginButton.fire()
+                loginButton::fire
         );
 
         loginScene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
