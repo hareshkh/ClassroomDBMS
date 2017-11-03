@@ -134,8 +134,10 @@ public class userSignUp {
                     main.window.setScene(profile.main(status));
                     signUpStage.close();
                 }
-                else
+                else {
                     error.setText(status[0]);
+                    System.out.println(status[0]);
+                }
             }
         });
 

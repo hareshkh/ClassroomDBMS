@@ -16,7 +16,7 @@ public class dbSignUp {
 
         String userID = getMotherboardSN.getMotherboardSN();
 
-        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomdbms.currentuser", "id, fullName, emailId, phoneNumber, gender, college", "?,?,?,?,?");
+        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomdbms.currentuser", "id, fullName, emailId, phoneNumber, gender, college", "?,?,?,?,?,?");
 
         String[] status = new String[6];
         status[1]=fullName;
