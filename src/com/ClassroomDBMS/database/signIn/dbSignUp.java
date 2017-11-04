@@ -48,8 +48,8 @@ public class dbSignUp {
         } finally {
             DBUtils.closeStatement(stmt);
             DBUtils.closeConnection(con);
-            return status;
         }
+        return status;
     }
 
     public static String[] studentSignUp(String firstName, String lastName, String emailId, String password, String dob, String phoneNumber, String gender, String college) {
