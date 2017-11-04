@@ -160,6 +160,18 @@ public class DBUtils {
         return "UPDATE " + tableName + " SET " + setCondition + whereClause;
     }
 
+    public static String prepareReplaceQuery(String tableName, String columns, String values) {
+        if(columns.isEmpty())
+            columns = " ";
+        else
+            columns = " (" + columns + ") ";
+        if(values.isEmpty())
+            values = "";
+        else
+            values = " VALUES (" + values + ")";
+        return "REPLACE INTO " + tableName + columns + values;
+    }
+
     public static void performAction(String action){
         Connection con = null;
         try{
