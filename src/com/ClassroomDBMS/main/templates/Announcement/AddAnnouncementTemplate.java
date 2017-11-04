@@ -1,7 +1,6 @@
-package com.ClassroomDBMS.main.templates.AddAnnouncement;
+package com.ClassroomDBMS.main.templates.Announcement;
 
 import com.ClassroomDBMS.database.announcements.DBAnnouncements;
-import com.ClassroomDBMS.database.assignments.DBAssignments;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

@@ -1,9 +1,10 @@
 package com.ClassroomDBMS.main.models;
 
-import com.ClassroomDBMS.database.classrooms.DBClassrooms;
 import com.ClassroomDBMS.main.functions.profileFaculty;
-import com.ClassroomDBMS.main.templates.AddAnnouncement.AddAnnouncementTemplate;
-import com.ClassroomDBMS.main.templates.AddAssignment.AddAssignmentTemplate;
+import com.ClassroomDBMS.main.templates.Announcement.AddAnnouncementTemplate;
+import com.ClassroomDBMS.main.templates.Announcement.ViewAllAnnouncementsTemplate;
+import com.ClassroomDBMS.main.templates.Assignment.AddAssignmentTemplate;
+import com.ClassroomDBMS.main.templates.Assignment.ViewAllAssignmentsTemplate;
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -161,7 +162,27 @@ public class ClassroomModel {
 
         hBox.getChildren().addAll(assignmentButton, announcementButton);
 
-        vBox.getChildren().addAll(label, hBox);
+        HBox hBox1 = new HBox(10);
+
+        Button allAssignmentButton = new Button("View All Assignment");
+        allAssignmentButton.setFont(new Font("Cambria", 18));
+        allAssignmentButton.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
+        allAssignmentButton.setTextFill(Color.web("#fff"));
+        allAssignmentButton.setOnAction(e -> {
+            profileFaculty.optionData.setTop(ViewAllAssignmentsTemplate.getAllAssignmentsView(courseId, faculty_emailId));
+        });
+
+        Button allAnnouncementButton = new Button("View All Announcement");
+        allAnnouncementButton.setFont(new Font("Cambria", 18));
+        allAnnouncementButton.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
+        allAnnouncementButton.setTextFill(Color.web("#fff"));
+        allAnnouncementButton.setOnAction(e -> {
+            profileFaculty.optionData.setTop(ViewAllAnnouncementsTemplate.getAllAnnouncementsView(courseId, faculty_emailId));
+        });
+
+        hBox1.getChildren().addAll(allAssignmentButton, allAnnouncementButton);
+
+        vBox.getChildren().addAll(label, hBox, hBox1);
 
         BorderPane borderPane = new BorderPane(vBox);
 

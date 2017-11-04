@@ -1,8 +1,6 @@
-package com.ClassroomDBMS.main.templates.AddAssignment;
+package com.ClassroomDBMS.main.templates.Assignment;
 
 import com.ClassroomDBMS.database.assignments.DBAssignments;
-import com.ClassroomDBMS.database.classrooms.DBClassrooms;
-import com.ClassroomDBMS.main.functions.profileFaculty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

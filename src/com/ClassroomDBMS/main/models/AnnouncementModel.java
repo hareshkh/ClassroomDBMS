@@ -2,18 +2,28 @@ package com.ClassroomDBMS.main.models;
 
 public class AnnouncementModel {
 
+    private String courseId;
     private String faculty_emailId;
     private String timestamp;
     private String message;
     private String attachment_type;
     private String attachment_url;
 
-    public AnnouncementModel(String faculty_emailId, String timestamp, String message, String attachment_type, String attachment_url) {
+    public AnnouncementModel(String courseId, String faculty_emailId, String timestamp, String message, String attachment_type, String attachment_url) {
+        this.courseId = courseId;
         this.faculty_emailId = faculty_emailId;
         this.timestamp = timestamp;
         this.message = message;
         this.attachment_type = attachment_type;
         this.attachment_url = attachment_url;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getFaculty_emailId() {

@@ -1,11 +1,14 @@
 package com.ClassroomDBMS.database.assignments;
 
 import com.ClassroomDBMS.database.utils.DBUtils;
+import com.ClassroomDBMS.main.models.AssignmentModel;
+import com.ClassroomDBMS.main.models.ClassroomModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DBAssignments {
 
@@ -41,6 +44,39 @@ public class DBAssignments {
         }
 
         return status;
+    }
+
+    public static ArrayList<AssignmentModel> getAllAssignments(String courseId, String faculty_emailId) {
+        ArrayList<AssignmentModel> assignmentModels = new ArrayList<>();
+
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.assignments", "courseId = ? AND faculty_emailId = ?");
+
+        try {
+            con = DBUtils.getConnection();
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, courseId);
+            stmt.setString(2, faculty_emailId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                assignmentModels.add(new AssignmentModel(rs.getString("courseId"), rs.getString("faculty_emailId"),
+                        rs.getString("timestamp"), rs.getString("deadline"),
+                        rs.getString("assignment_details"), rs.getString("attachment_type"),
+                        rs.getString("attachment_url")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtils.closeStatement(stmt);
+            DBUtils.closeConnection(con);
+        }
+
+        return assignmentModels;
     }
 
 }
