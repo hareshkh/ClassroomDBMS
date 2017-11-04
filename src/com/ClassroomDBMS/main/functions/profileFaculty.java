@@ -180,7 +180,7 @@ public class profileFaculty {
             try {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK)
-                    deleteAccount.deleteAccount(emailID.getText());
+                    deleteAccount.deleteFacultyAccount(emailID.getText());
                 main.window.setScene(loginHome.homeView());
             } catch (Exception exe) {
                 exe.getMessage();

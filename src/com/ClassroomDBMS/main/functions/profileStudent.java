@@ -181,7 +181,7 @@ public class profileStudent {
             try {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK)
-                    deleteAccount.deleteAccount(emailID.getText());
+                    deleteAccount.deleteStudentAccount(emailID.getText());
                 main.window.setScene(loginHome.homeView());
             } catch (Exception exe) {
                 exe.getMessage();
