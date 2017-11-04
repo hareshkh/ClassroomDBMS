@@ -6,7 +6,6 @@ import com.ClassroomDBMS.database.signIn.userSignOut;
 import com.ClassroomDBMS.main.models.ClassroomModel;
 import com.ClassroomDBMS.main.templates.AddCourse.AddCourseTemplate;
 import com.ClassroomDBMS.main.templates.editProfile.updateUserDetails;
-import com.ClassroomDBMS.main.templates.search.peopleSearch;
 import com.ClassroomDBMS.main.templates.speakouts.notices;
 import com.ClassroomDBMS.main.windows.home.main;
 import de.jensd.fx.glyphs.GlyphsDude;
@@ -33,10 +32,9 @@ public class profileFaculty {
     public static Label phoneNumberDesignation;
     public static Label course;
     public static Label addCourse;
-    public static Label findPeople;
     public static Label speakOut;
 
-    public static StackPane addCoursePane, findPeoplePane, speakOutPane, logoutPane;
+    public static StackPane addCoursePane, speakOutPane, logoutPane;
 
     public static String facultyEmailId;
 
@@ -149,27 +147,6 @@ public class profileFaculty {
             });
         }
 
-        { // FIND PEOPLE
-            findPeople = GlyphsDude.createIconLabel(FontAwesomeIcon.SEARCH,
-                    "  Find Students",
-                    "20",
-                    "18",
-                    ContentDisplay.LEFT);
-            findPeople.setFont(new Font("Cambria", 20));
-            findPeople.setTextFill(Color.web("#171717"));
-            findPeople.setPadding(new Insets(10));
-            findPeoplePane = new StackPane(findPeople);
-            findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
-            findPeoplePane.setStyle("-fx-background-color: grey");
-            findPeoplePane.setCursor(Cursor.HAND);
-
-            peopleSearch ob = new peopleSearch();
-            findPeoplePane.setOnMouseClicked(e -> {
-                optionData.setTop(ob.peoplesearch());
-                toggleTextColors("#171717", "red", "#171717", "#171717");
-            });
-        }
-
         { // SPEAK OUT
             speakOut = GlyphsDude.createIconLabel(FontAwesomeIcon.WECHAT,
                     "  SpeakOut",
@@ -191,7 +168,7 @@ public class profileFaculty {
             });
         }
 
-        buttons.getChildren().addAll(addCoursePane, findPeoplePane, speakOutPane);
+        buttons.getChildren().addAll(addCoursePane, speakOutPane);
         options.setCenter(buttons);
 
         { // LOGOUT
@@ -288,7 +265,7 @@ public class profileFaculty {
             });
         }
 
-        buttons.getChildren().addAll(addCoursePane, findPeoplePane, speakOutPane);
+        buttons.getChildren().addAll(addCoursePane, speakOutPane);
         options.setCenter(buttons);
 
     }

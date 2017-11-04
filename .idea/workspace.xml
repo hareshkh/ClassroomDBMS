@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb4f0844-a678-4a9f-a5f2-332a5ee99952" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AnnouncementModel.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AnnouncementModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AssignmentModel.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AssignmentModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAnnouncement/AddAnnouncementTemplate.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Announcement/AddAnnouncementTemplate.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAssignment/AddAssignmentTemplate.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Assignment/AddAssignmentTemplate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,66 +20,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="profileFaculty.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profileFaculty.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="127" column="44" lean-forward="false" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
+            <state relative-caret-position="560">
+              <caret line="268" column="35" lean-forward="true" selection-start-line="268" selection-start-column="35" selection-end-line="268" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6423#6571#0" expanded="false" />
-                <element signature="e#8473#8706#0" expanded="false" />
-                <element signature="e#8743#9482#0" expanded="false" />
-                <marker date="1509822518669" expanded="true" signature="4865:5681" ph="..." />
-                <marker date="1509822518669" expanded="false" signature="5730:6573" ph="..." />
-                <marker date="1509822518669" expanded="false" signature="6620:7454" ph="..." />
-                <marker date="1509822518669" expanded="false" signature="7618:8348" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/utils/DBUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="172" column="5" lean-forward="true" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassroomModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewAllAnnouncementsTemplate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Announcement/ViewAllAnnouncementsTemplate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewAllAssignmentsTemplate.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Assignment/ViewAllAssignmentsTemplate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#7452#7685#0" expanded="false" />
+                <element signature="e#7722#8461#0" expanded="false" />
+                <marker date="1509829535709" expanded="true" signature="4752:5568" ph="..." />
+                <marker date="1509829535709" expanded="false" signature="5615:6449" ph="..." />
+                <marker date="1509829535709" expanded="false" signature="6597:7327" ph="..." />
               </folding>
             </state>
           </provider>
@@ -127,6 +72,7 @@
       <find>setTextF</find>
       <find>timestamp</find>
       <find>assign</find>
+      <find>Find S</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\submi\Desktop\ClassroomDBMS\src\com\ClassroomDBMS\database\signIn</dir>
@@ -189,7 +135,6 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/signIn/dbSignUp.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/classrooms/DBClassrooms.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddCourse/AddCourseTemplate.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAssignment/AddAssignmentTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAnnouncement/AddAnnouncementTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AssignmentModel.java" />
@@ -199,6 +144,7 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Announcement/ViewAllAnnouncementsTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Assignment/ViewAllAssignmentsTemplate.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java" />
       </list>
     </option>
   </component>
@@ -262,129 +208,7 @@
               <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="announcements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="assignments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="classrooms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="logIn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="peopleSearch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="signIn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="speakOutMessages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorialSubmission" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="updateProfile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="functions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Announcement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Assignment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -703,12 +527,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1500723615809</updated>
-      <workItem from="1509732472861" duration="36010000" />
+      <workItem from="1509732472861" duration="36258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36010000" />
+    <option name="totallyTimeSpent" value="36258000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1155,23 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="127" column="44" lean-forward="false" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6423#6571#0" expanded="false" />
-            <element signature="e#8473#8706#0" expanded="false" />
-            <element signature="e#8743#9482#0" expanded="false" />
-            <marker date="1509822518669" expanded="true" signature="4865:5681" ph="..." />
-            <marker date="1509822518669" expanded="false" signature="5730:6573" ph="..." />
-            <marker date="1509822518669" expanded="false" signature="6620:7454" ph="..." />
-            <marker date="1509822518669" expanded="false" signature="7618:8348" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -1190,18 +997,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/utils/DBUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Assignment/ViewAllAssignmentsTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="172" column="5" lean-forward="true" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        <state relative-caret-position="493">
+          <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1218,12 +1017,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/Assignment/ViewAllAssignmentsTemplate.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+        <state relative-caret-position="-1">
+          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3009">
+          <caret line="184" column="1" lean-forward="true" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="268" column="35" lean-forward="true" selection-start-line="268" selection-start-column="35" selection-end-line="268" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7452#7685#0" expanded="false" />
+            <element signature="e#7722#8461#0" expanded="false" />
+            <marker date="1509829535709" expanded="true" signature="4752:5568" ph="..." />
+            <marker date="1509829535709" expanded="false" signature="5615:6449" ph="..." />
+            <marker date="1509829535709" expanded="false" signature="6597:7327" ph="..." />
           </folding>
         </state>
       </provider>
