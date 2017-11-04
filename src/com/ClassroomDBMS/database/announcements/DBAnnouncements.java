@@ -9,23 +9,24 @@ import java.sql.SQLException;
 
 public class DBAnnouncements {
 
-    public static String postAnnouncement(String faculty_emailId, String timestamp, String message, String attachment_type, String attachment_url) {
+    public static String postAnnouncement(String courseId, String faculty_emailId, String timestamp, String message, String attachment_type, String attachment_url) {
 
         String status = "";
 
         Connection con = null;
         PreparedStatement stmt = null;
 
-        String query = DBUtils.prepareInsertQuery("classroomdbms.announcements", "faculty_emailId, timestamp, message, attachment_type, attachment_url", "?,?,?,?,?");
+        String query = DBUtils.prepareInsertQuery("classroomdbms.announcements", "courseId, faculty_emailId, timestamp, message, attachment_type, attachment_url", "?,?,?,?,?,?");
 
         try {
             con = DBUtils.getConnection();
             stmt = con.prepareStatement(query);
-            stmt.setString(1, faculty_emailId);
-            stmt.setString(2, timestamp);
-            stmt.setString(3, message);
-            stmt.setString(4, attachment_type);
-            stmt.setString(5, attachment_url);
+            stmt.setString(1, courseId);
+            stmt.setString(2, faculty_emailId);
+            stmt.setString(3, timestamp);
+            stmt.setString(4, message);
+            stmt.setString(5, attachment_type);
+            stmt.setString(6, attachment_url);
             stmt.executeUpdate();
 
             status = "success";

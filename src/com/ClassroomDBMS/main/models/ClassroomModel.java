@@ -2,6 +2,8 @@ package com.ClassroomDBMS.main.models;
 
 import com.ClassroomDBMS.database.classrooms.DBClassrooms;
 import com.ClassroomDBMS.main.functions.profileFaculty;
+import com.ClassroomDBMS.main.templates.AddAnnouncement.AddAnnouncementTemplate;
+import com.ClassroomDBMS.main.templates.AddAssignment.AddAssignmentTemplate;
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -146,7 +148,7 @@ public class ClassroomModel {
         assignmentButton.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
         assignmentButton.setTextFill(Color.web("#fff"));
         assignmentButton.setOnAction(e -> {
-
+            profileFaculty.optionData.setTop(AddAssignmentTemplate.getAddAssignmentView(courseId, faculty_emailId));
         });
 
         Button announcementButton = new Button("Add Announcement");
@@ -154,7 +156,7 @@ public class ClassroomModel {
         announcementButton.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
         announcementButton.setTextFill(Color.web("#fff"));
         announcementButton.setOnAction(e -> {
-
+            profileFaculty.optionData.setTop(AddAnnouncementTemplate.getAddAnnouncementView(courseId, faculty_emailId));
         });
 
         hBox.getChildren().addAll(assignmentButton, announcementButton);

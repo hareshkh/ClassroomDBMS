@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb4f0844-a678-4a9f-a5f2-332a5ee99952" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java" afterPath="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,14 +25,14 @@
       <file leaf-file-name="profileFaculty.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="127" column="44" lean-forward="false" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
+            <state relative-caret-position="271">
+              <caret line="127" column="43" lean-forward="true" selection-start-line="127" selection-start-column="43" selection-end-line="127" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6423#6571#0" expanded="false" />
                 <element signature="e#8473#8706#0" expanded="false" />
                 <element signature="e#8743#9482#0" expanded="false" />
-                <marker date="1509822518669" expanded="false" signature="4865:5681" ph="..." />
+                <marker date="1509822518669" expanded="true" signature="4865:5681" ph="..." />
                 <marker date="1509822518669" expanded="false" signature="5730:6573" ph="..." />
                 <marker date="1509822518669" expanded="false" signature="6620:7454" ph="..." />
                 <marker date="1509822518669" expanded="false" signature="7618:8348" ph="..." />
@@ -39,11 +41,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ClassroomModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="159" column="11" lean-forward="true" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AddCourseTemplate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddCourse/AddCourseTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="85" column="11" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="85" selection-end-column="11" />
+            <state relative-caret-position="272">
+              <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassroomModel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java">
+      <file leaf-file-name="AddAssignmentTemplate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAssignment/AddAssignmentTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="151" column="67" lean-forward="true" selection-start-line="151" selection-start-column="67" selection-end-line="151" selection-end-column="67" />
+            <state relative-caret-position="271">
+              <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,12 +77,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/speakouts/message.java">
+      <file leaf-file-name="AddAnnouncementTemplate.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAnnouncement/AddAnnouncementTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="45" column="15" lean-forward="true" selection-start-line="45" selection-start-column="15" selection-end-line="46" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="203">
+              <caret line="45" column="83" lean-forward="true" selection-start-line="45" selection-start-column="83" selection-end-line="45" selection-end-column="83" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,6 +122,7 @@
       <find>emailI</find>
       <find>facultyEmailId</find>
       <find>setTextF</find>
+      <find>timestamp</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\submi\Desktop\ClassroomDBMS\src\com\ClassroomDBMS\database\signIn</dir>
@@ -127,8 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/windows/main/main.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/header.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/findPeople.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/searchResult.java" />
@@ -170,14 +185,16 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/editProfile/updateUserDetails.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/signIn/deleteAccount.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/signIn/dbSignUp.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AnnouncementModel.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AssignmentModel.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/classrooms/DBClassrooms.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddCourse/AddCourseTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAssignment/AddAssignmentTemplate.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAnnouncement/AddAnnouncementTemplate.java" />
       </list>
     </option>
   </component>
@@ -346,6 +363,24 @@
               <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="AddAnnouncement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ClassroomDBMS" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="AddAssignment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ClassroomDBMS" type="b2602c69:ProjectViewProjectNode" />
@@ -760,12 +795,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1500723615809</updated>
-      <workItem from="1509732472861" duration="30289000" />
+      <workItem from="1509732472861" duration="32734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30289000" />
+    <option name="totallyTimeSpent" value="32734000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -788,7 +823,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2700491" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3715221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -827,7 +862,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -836,29 +871,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/utils/property.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/tutorialSubmission/submissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/src.zip!/java/util/regex/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="1085" column="19" lean-forward="false" selection-start-line="1085" selection-start-column="19" selection-end-line="1085" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/javafx-src.zip!/javafx/scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -903,9 +915,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="152" column="41" lean-forward="false" selection-start-line="152" selection-start-column="41" selection-end-line="152" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,74 +1093,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="145" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="145" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AssignmentModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#942#943#0" expanded="true" />
-            <element signature="e#974#975#0" expanded="true" />
-            <element signature="e#1024#1025#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1101#1102#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1306#1307#0" expanded="true" />
-            <element signature="e#1374#1375#0" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1476#1477#0" expanded="true" />
-            <element signature="e#1514#1515#0" expanded="true" />
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1630#1631#0" expanded="true" />
-            <element signature="e#1671#1672#0" expanded="true" />
-            <element signature="e#1708#1709#0" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1820#1821#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/signIn/deleteAccount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="106" lean-forward="true" selection-start-line="12" selection-start-column="106" selection-end-line="12" selection-end-column="106" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/classrooms/DBClassrooms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="76" column="88" lean-forward="true" selection-start-line="76" selection-start-column="88" selection-end-line="76" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1276,23 +1223,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="127" column="44" lean-forward="false" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6423#6571#0" expanded="false" />
-            <element signature="e#8473#8706#0" expanded="false" />
-            <element signature="e#8743#9482#0" expanded="false" />
-            <marker date="1509822518669" expanded="false" signature="4865:5681" ph="..." />
-            <marker date="1509822518669" expanded="false" signature="5730:6573" ph="..." />
-            <marker date="1509822518669" expanded="false" signature="6620:7454" ph="..." />
-            <marker date="1509822518669" expanded="false" signature="7618:8348" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/speakouts/message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -1301,20 +1231,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddCourse/AddCourseTemplate.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/announcements/DBAnnouncements.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="85" column="11" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="85" selection-end-column="11" />
+        <state relative-caret-position="393">
+          <caret line="28" column="46" lean-forward="true" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/assignments/DBAssignments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/AssignmentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/database/classrooms/DBClassrooms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="76" column="88" lean-forward="true" selection-start-line="76" selection-start-column="88" selection-end-line="76" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/tutorialSubmission/submissions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="78" column="94" lean-forward="false" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddCourse/AddCourseTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/functions/profileFaculty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="127" column="43" lean-forward="true" selection-start-line="127" selection-start-column="43" selection-end-line="127" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6423#6571#0" expanded="false" />
+            <element signature="e#8473#8706#0" expanded="false" />
+            <element signature="e#8743#9482#0" expanded="false" />
+            <marker date="1509822518669" expanded="true" signature="4865:5681" ph="..." />
+            <marker date="1509822518669" expanded="false" signature="5730:6573" ph="..." />
+            <marker date="1509822518669" expanded="false" signature="6620:7454" ph="..." />
+            <marker date="1509822518669" expanded="false" signature="7618:8348" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/models/ClassroomModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="151" column="67" lean-forward="true" selection-start-line="151" selection-start-column="67" selection-end-line="151" selection-end-column="67" />
+        <state relative-caret-position="280">
+          <caret line="159" column="11" lean-forward="true" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAssignment/AddAssignmentTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomDBMS/main/templates/AddAnnouncement/AddAnnouncementTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="45" column="83" lean-forward="true" selection-start-line="45" selection-start-column="83" selection-end-line="45" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
