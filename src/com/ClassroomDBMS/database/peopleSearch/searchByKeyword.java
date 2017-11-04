@@ -4,6 +4,7 @@ import com.ClassroomDBMS.database.utils.DBUtils;
 import com.ClassroomDBMS.main.templates.search.searchResult;
 
 import javafx.scene.layout.VBox;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,10 +16,10 @@ public class searchByKeyword {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String whereClause = "(fullName LIKE '%"+keyword+"%' OR emailId LIKE '%"+keyword+"%' OR phoneNumber LIKE '%"+keyword+"%' OR college LIKE '%"+keyword+"%')";
+        String whereClause = "(firstName LIKE '%" + keyword + "%' OR lastName LIKE '%" + keyword + "%' OR emailId LIKE '%" + keyword + "%' OR phoneNumber LIKE '%" + keyword + "%' OR college LIKE '%" + keyword + "%')";
 
-        String otherClause = "ORDER BY fullName asc";
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.userdetail", whereClause, otherClause);
+        String otherClause = "ORDER BY TRIM(firstName) asc, TRIM(lastName) asc";
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.studentdetails", whereClause, otherClause);
 
         VBox searchStack = new VBox(10);
 
@@ -30,24 +31,29 @@ public class searchByKeyword {
             int size = rs.getRow();
             rs.beforeFirst();
 
-            if (size==0)
+            if (size == 0) {
                 searchStack.getChildren().add(searchResult.searchResult());
+                return searchStack;
+            }
 
-            String fullName;
+            String firstName;
+            String lastName;
             String emailId;
             String phoneNumber;
             String college;
 
             while (rs.next()) {
-                fullName = rs.getString("fullName");
+                firstName = rs.getString("firstName");
+                lastName = rs.getString("lastName");
                 emailId = rs.getString("emailId");
                 phoneNumber = rs.getString("phoneNumber");
                 college = rs.getString("college");
 
-                searchStack.getChildren().add(searchResult.searchResult(fullName,emailId,phoneNumber,college));
+                searchStack.getChildren().add(searchResult.searchResult(firstName, lastName, emailId, phoneNumber, college));
             }
         } catch (Exception e) {
             e.getMessage();
+            System.out.println(e.getMessage());
         } finally {
             DBUtils.closeAll(rs, stmt, con);
         }
