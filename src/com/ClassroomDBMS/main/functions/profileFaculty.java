@@ -1,12 +1,13 @@
 package com.ClassroomDBMS.main.functions;
 
+import com.ClassroomDBMS.database.classrooms.DBClassrooms;
 import com.ClassroomDBMS.database.signIn.deleteAccount;
 import com.ClassroomDBMS.database.signIn.userSignOut;
-import com.ClassroomDBMS.main.templates.Home.courseInfo;
+import com.ClassroomDBMS.main.models.ClassroomModel;
+import com.ClassroomDBMS.main.templates.AddCourse.AddCourseTemplate;
 import com.ClassroomDBMS.main.templates.editProfile.updateUserDetails;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
 import com.ClassroomDBMS.main.templates.speakouts.notices;
-import com.ClassroomDBMS.main.templates.tutorialSubmission.submissions;
 import com.ClassroomDBMS.main.windows.home.main;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -22,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class profileFaculty {
@@ -30,18 +32,33 @@ public class profileFaculty {
     public static Label emailID;
     public static Label phoneNumberDesignation;
     public static Label course;
+    public static Label addCourse;
     public static Label findPeople;
     public static Label speakOut;
-    public static Label submission;
+
+    public static StackPane addCoursePane, findPeoplePane, speakOutPane, logoutPane;
+
+    public static String facultyEmailId;
+
+    public static VBox buttons;
+
+    public static BorderPane userOptions;
+
+    public static BorderPane options;
+    public static BorderPane optionData;
+    public static BorderPane optionDetails;
 
     public static Scene main(String[] profileDetails) {
-        BorderPane userOptions = new BorderPane();
 
-        BorderPane optionDetails = new BorderPane();
+        facultyEmailId = profileDetails[4];
+
+        userOptions = new BorderPane();
+
+        optionDetails = new BorderPane();
         optionDetails.setStyle("-fx-background-color: #171717");
         optionDetails.setPrefWidth(220);
 
-        BorderPane options = new BorderPane();
+        options = new BorderPane();
         VBox userData = new VBox(10);
         userData.setPadding(new Insets(0, 0, 20, 0));
         userData.setAlignment(Pos.TOP_CENTER);
@@ -85,83 +102,120 @@ public class profileFaculty {
 
         options.setTop(userData);
 
-        VBox buttons = new VBox(15);
+        optionData = new BorderPane();
 
-        course = GlyphsDude.createIconLabel(FontAwesomeIcon.USERS,
-                "  Home",
-                "20",
-                "18",
-                ContentDisplay.LEFT);
-        course.setFont(new Font("Cambria", 20));
-        course.setTextFill(Color.web("#171717"));
-        course.setPadding(new Insets(10));
-        StackPane coursePane = new StackPane(course);
-        coursePane.setAlignment(Pos.BASELINE_LEFT);
-        coursePane.setStyle("-fx-background-color: grey");
-        coursePane.setCursor(Cursor.HAND);
+        buttons = new VBox(15);
 
-        findPeople = GlyphsDude.createIconLabel(FontAwesomeIcon.SEARCH,
-                "  Find Students",
-                "20",
-                "18",
-                ContentDisplay.LEFT);
-        findPeople.setFont(new Font("Cambria", 20));
-        findPeople.setTextFill(Color.web("#171717"));
-        findPeople.setPadding(new Insets(10));
-        StackPane findPeoplePane = new StackPane(findPeople);
-        findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
-        findPeoplePane.setStyle("-fx-background-color: grey");
-        findPeoplePane.setCursor(Cursor.HAND);
+        ArrayList<ClassroomModel> classrooms = DBClassrooms.getAllClassrooms(profileDetails[4]);
 
-        speakOut = GlyphsDude.createIconLabel(FontAwesomeIcon.WECHAT,
-                "  SpeakOut",
-                "20",
-                "18",
-                ContentDisplay.LEFT);
-        speakOut.setFont(new Font("Cambria", 20));
-        speakOut.setTextFill(Color.web("#171717"));
-        speakOut.setPadding(new Insets(10));
-        StackPane speakOutPane = new StackPane(speakOut);
-        speakOutPane.setAlignment(Pos.BASELINE_LEFT);
-        speakOutPane.setStyle("-fx-background-color: grey");
-        speakOutPane.setCursor(Cursor.HAND);
+        for (ClassroomModel model : classrooms) {
+            course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,
+                    model.getCourseId(),
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            course.setFont(new Font("Cambria", 20));
+            course.setTextFill(Color.web("#171717"));
+            course.setPadding(new Insets(10));
+            StackPane coursePane = new StackPane(course);
+            coursePane.setAlignment(Pos.BASELINE_LEFT);
+            coursePane.setStyle("-fx-background-color: grey");
+            coursePane.setCursor(Cursor.HAND);
 
-        submission = GlyphsDude.createIconLabel(FontAwesomeIcon.UPLOAD,
-                "  Submission",
-                "20",
-                "18",
-                ContentDisplay.LEFT);
-        submission.setFont(new Font("Cambria", 20));
-        submission.setTextFill(Color.web("#171717"));
-        submission.setPadding(new Insets(10));
-        StackPane submissionPane = new StackPane(submission);
-        submissionPane.setAlignment(Pos.BASELINE_LEFT);
-        submissionPane.setStyle("-fx-background-color: grey");
-        submissionPane.setCursor(Cursor.HAND);
+            buttons.getChildren().addAll(coursePane);
 
-        buttons.getChildren().addAll(coursePane, findPeoplePane, speakOutPane, submissionPane);
+            coursePane.setOnMouseClicked(e -> {
+                optionData.setTop(model.getInfo());
+            });
+        }
+
+        { // ADD COURSE
+            addCourse = GlyphsDude.createIconLabel(FontAwesomeIcon.SEARCH,
+                    "  Add Course",
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            addCourse.setFont(new Font("Cambria", 20));
+            addCourse.setTextFill(Color.web("#171717"));
+            addCourse.setPadding(new Insets(10));
+            addCoursePane = new StackPane(addCourse);
+            addCoursePane.setAlignment(Pos.BASELINE_LEFT);
+            addCoursePane.setStyle("-fx-background-color: grey");
+            addCoursePane.setCursor(Cursor.HAND);
+
+            addCoursePane.setOnMouseClicked(e -> {
+                optionData.setTop(AddCourseTemplate.getAddCourseView(profileDetails[4]));
+                toggleTextColors("red", "#171717", "#171717", "#171717");
+            });
+        }
+
+        { // FIND PEOPLE
+            findPeople = GlyphsDude.createIconLabel(FontAwesomeIcon.SEARCH,
+                    "  Find Students",
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            findPeople.setFont(new Font("Cambria", 20));
+            findPeople.setTextFill(Color.web("#171717"));
+            findPeople.setPadding(new Insets(10));
+            findPeoplePane = new StackPane(findPeople);
+            findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
+            findPeoplePane.setStyle("-fx-background-color: grey");
+            findPeoplePane.setCursor(Cursor.HAND);
+
+            peopleSearch ob = new peopleSearch();
+            findPeoplePane.setOnMouseClicked(e -> {
+                optionData.setTop(ob.peoplesearch());
+                toggleTextColors("#171717", "red", "#171717", "#171717");
+            });
+        }
+
+        { // SPEAK OUT
+            speakOut = GlyphsDude.createIconLabel(FontAwesomeIcon.WECHAT,
+                    "  SpeakOut",
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            speakOut.setFont(new Font("Cambria", 20));
+            speakOut.setTextFill(Color.web("#171717"));
+            speakOut.setPadding(new Insets(10));
+            speakOutPane = new StackPane(speakOut);
+            speakOutPane.setAlignment(Pos.BASELINE_LEFT);
+            speakOutPane.setStyle("-fx-background-color: grey");
+            speakOutPane.setCursor(Cursor.HAND);
+
+            speakOutPane.setOnMouseClicked(e -> {
+                optionData.setTop(notices.notices(emailID.getText()));
+                toggleTextColors("#171717", "#171717", "red", "#171717");
+                notices.messages.requestFocus();
+            });
+        }
+
+        buttons.getChildren().addAll(addCoursePane, findPeoplePane, speakOutPane);
         options.setCenter(buttons);
 
-        Label logout = GlyphsDude.createIconLabel(FontAwesomeIcon.SIGN_OUT,
-                "  Log Out",
-                "20",
-                "18",
-                ContentDisplay.LEFT);
-        logout.setFont(new Font("Cambria", 20));
-        logout.setTextFill(Color.web("#171717"));
-        logout.setPadding(new Insets(10));
-        StackPane logoutPane = new StackPane(logout);
-        logoutPane.setAlignment(Pos.BASELINE_LEFT);
-        logoutPane.setStyle("-fx-background-color: grey");
-        logoutPane.setCursor(Cursor.HAND);
+        { // LOGOUT
+            Label logout = GlyphsDude.createIconLabel(FontAwesomeIcon.SIGN_OUT,
+                    "  Log Out",
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            logout.setFont(new Font("Cambria", 20));
+            logout.setTextFill(Color.web("#171717"));
+            logout.setPadding(new Insets(10));
+            logoutPane = new StackPane(logout);
+            logoutPane.setAlignment(Pos.BASELINE_LEFT);
+            logoutPane.setStyle("-fx-background-color: grey");
+            logoutPane.setCursor(Cursor.HAND);
+
+            logoutPane.setOnMouseClicked(e -> {
+                userSignOut.userSignOut();
+                main.window.setScene(loginHome.homeView());
+            });
+        }
 
         options.setBottom(logoutPane);
         optionDetails.setCenter(options);
-
-        BorderPane optionData = new BorderPane();
-
-        optionData.setTop(courseInfo.TAinfo());
-        toggleTextColors("red", "#171717", "#171717", "#171717");
 
         editButton.setOnAction(e -> {
             e.consume();
@@ -187,34 +241,6 @@ public class profileFaculty {
             }
         });
 
-        coursePane.setOnMouseClicked(e -> {
-            optionData.setTop(courseInfo.TAinfo());
-            toggleTextColors("red", "#171717", "#171717", "#171717");
-        });
-
-        peopleSearch ob = new peopleSearch();
-        findPeoplePane.setOnMouseClicked(e -> {
-            optionData.setTop(ob.peoplesearch());
-            toggleTextColors("#171717", "red", "#171717", "#171717");
-        });
-
-        speakOutPane.setOnMouseClicked(e -> {
-            optionData.setTop(notices.notices(emailID.getText()));
-            toggleTextColors("#171717", "#171717", "red", "#171717");
-            notices.messages.requestFocus();
-        });
-
-        submissionPane.setOnMouseClicked(e -> {
-            optionData.setTop(submissions.tutorials(emailID.getText()));
-            toggleTextColors("#171717", "#171717", "#171717", "red");
-            submissions.tutorials.requestFocus();
-        });
-
-        logoutPane.setOnMouseClicked(e -> {
-            userSignOut.userSignOut();
-            main.window.setScene(loginHome.homeView());
-        });
-
         userOptions.setLeft(optionDetails);
         userOptions.setCenter(optionData);
 
@@ -233,10 +259,38 @@ public class profileFaculty {
     }
 
     public static void toggleTextColors(String courseColor, String findColor, String speakoutColor, String submissionColor) {
-        course.setTextFill(Color.web(courseColor));
-        findPeople.setTextFill(Color.web(findColor));
-        speakOut.setTextFill(Color.web(speakoutColor));
-        submission.setTextFill(Color.web(submissionColor));
+//        course.setTextFill(Color.web(courseColor));
+//        findPeople.setTextFill(Color.web(findColor));
+//        speakOut.setTextFill(Color.web(speakoutColor));
+    }
+
+    public static void updateCourses() {
+        ArrayList<ClassroomModel> classrooms = DBClassrooms.getAllClassrooms(facultyEmailId);
+        buttons.getChildren().clear();
+        for (ClassroomModel model : classrooms) {
+            course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,
+                    model.getCourseId(),
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            course.setFont(new Font("Cambria", 20));
+            course.setTextFill(Color.web("#171717"));
+            course.setPadding(new Insets(10));
+            StackPane coursePane = new StackPane(course);
+            coursePane.setAlignment(Pos.BASELINE_LEFT);
+            coursePane.setStyle("-fx-background-color: grey");
+            coursePane.setCursor(Cursor.HAND);
+
+            buttons.getChildren().add(0, coursePane);
+
+            coursePane.setOnMouseClicked(e -> {
+                optionData.setTop(model.getInfo());
+            });
+        }
+
+        buttons.getChildren().addAll(addCoursePane, findPeoplePane, speakOutPane);
+        options.setCenter(buttons);
+
     }
 
 }
