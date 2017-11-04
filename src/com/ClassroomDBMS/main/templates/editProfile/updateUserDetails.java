@@ -198,7 +198,7 @@ public class updateUserDetails {
             else if (!newPass.getText().equals(confirmPass.getText()))
                 errorInpassword.setText("New and confirm password don't match");
             else {
-                String status = passwordUpdate.passwordUpdate(currentUserDetail[2], oldPass.getText(), newPass.getText());
+                String status = passwordUpdate.passwordUpdateQuery(currentUserDetail[4], oldPass.getText(), newPass.getText(), "student");
 
                 if (status.equals("Success")) {
                     errorInpassword.setTextFill(Color.web("green"));
@@ -416,7 +416,7 @@ public class updateUserDetails {
             else if (!newPass.getText().equals(confirmPass.getText()))
                 errorInpassword.setText("New and confirm password don't match");
             else {
-                String status = passwordUpdate.passwordUpdate(currentUserDetail[2], oldPass.getText(), newPass.getText());
+                String status = passwordUpdate.passwordUpdateQuery(currentUserDetail[4], oldPass.getText(), newPass.getText(), "faculty");
 
                 if (status.equals("Success")) {
                     errorInpassword.setTextFill(Color.web("green"));
