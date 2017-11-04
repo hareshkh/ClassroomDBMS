@@ -1,7 +1,8 @@
 package com.ClassroomDBMS.main.windows.login;
 
 import com.ClassroomDBMS.database.logIn.dbLoginCheck;
-import com.ClassroomDBMS.main.functions.profile;
+import com.ClassroomDBMS.main.functions.profileFaculty;
+import com.ClassroomDBMS.main.functions.profileStudent;
 import com.ClassroomDBMS.main.windows.home.main;
 
 import javafx.beans.property.BooleanProperty;
@@ -28,7 +29,7 @@ public class userLogin {
 
     public String[] status;
 
-    public void userLogin(){
+    public void userLogin() {
         final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
         Stage loginStage = new Stage();
@@ -36,7 +37,7 @@ public class userLogin {
         loginStage.initModality(Modality.APPLICATION_MODAL);
 
         BorderPane loginPane = new BorderPane();
-        loginPane.setPadding(new Insets(50,20,20,20));
+        loginPane.setPadding(new Insets(50, 20, 20, 20));
 
         HBox loginHeader = new HBox();
 
@@ -49,13 +50,13 @@ public class userLogin {
         loginPane.setTop(loginHeader);
 
         VBox vb = new VBox(15);
-        vb.setPadding(new Insets(30,20,-20,20));
+        vb.setPadding(new Insets(30, 20, -20, 20));
 
-        TextField username = new TextField();
-        username.setPromptText("full name or email address");
-        username.setStyle("-fx-border-radius: 100");
-        username.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
+        TextField emailId = new TextField();
+        emailId.setPromptText("email address");
+        emailId.setStyle("-fx-border-radius: 100");
+        emailId.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && firstTime.get()) {
                 loginPane.requestFocus(); // Delegate the focus to container
                 firstTime.setValue(false); // Variable value changed for future references
             }
@@ -68,7 +69,7 @@ public class userLogin {
         Label error = new Label();
         error.setTextFill(Color.web("red"));
 
-        vb.getChildren().addAll(username,password, error);
+        vb.getChildren().addAll(emailId, password, error);
 
         loginPane.setCenter(vb);
 
@@ -80,26 +81,29 @@ public class userLogin {
         loginRow.getChildren().addAll(loginButton);
         loginRow.setAlignment(Pos.BASELINE_CENTER);
 
-        loginButton.setOnAction(e-> {
+        loginButton.setOnAction(e -> {
             e.consume();
-            if (username.getText().isEmpty())
-                error.setText("Username or EmailId can't be empty");
+            if (emailId.getText().isEmpty())
+                error.setText("EmailId can't be empty");
             else if (password.getText().isEmpty())
                 error.setText("Password can't be empty");
-            else{
-                status = dbLoginCheck.dbLoginCheck(username.getText(),password.getText());
-                if (status[0]=="success"){
-                    main.window.setScene(profile.main(status));
+            else {
+                status = dbLoginCheck.dbLoginCheck(emailId.getText(), password.getText());
+                if (status[0].equals("success")) {
+                    if(status[1].equals("student")) {
+                        main.window.setScene(profileStudent.main(status));
+                    } else if (status[1].equals("faculty")){
+                        main.window.setScene(profileFaculty.main(status));
+                    }
                     loginStage.close();
-                }
-                else
+                } else
                     error.setText("Incorrect Username / Email Id or password !");
             }
         });
 
         loginPane.setBottom(loginRow);
 
-        Scene loginScene = new Scene(loginPane,400,280);
+        Scene loginScene = new Scene(loginPane, 400, 280);
         loginScene.getAccelerators().put(
                 new KeyCodeCombination(KeyCode.ENTER),
                 loginButton::fire

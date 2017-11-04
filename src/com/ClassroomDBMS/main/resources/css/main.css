@@ -1,4 +1,4 @@
-//defining Main Window theme Color variable
+/*defining Main Window theme Color variable*/
 * {
    -fx-mainWindowBackgroundColor: #323232;
    -fx-WhiteColor: white;

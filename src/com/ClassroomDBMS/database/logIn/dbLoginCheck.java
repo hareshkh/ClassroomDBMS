@@ -9,47 +9,71 @@ import java.sql.ResultSet;
 
 public class dbLoginCheck {
 
-    public static String[] dbLoginCheck(String userName, String password) {
+    public static String[] dbLoginCheck(String emailId, String password) {
         Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        PreparedStatement stmt = null, stmt1 = null;
+        ResultSet rs = null, rs1 = null;
 
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.userdetail", "(fullName = ? OR emailId = ? ) AND password = ?");
+        String facultyQuery = DBUtils.prepareSelectQuery(" * ", "classroomdbms.facultydetails", "emailId = ? AND password = ?");
+        String studentQuery = DBUtils.prepareSelectQuery(" * ", "classroomdbms.studentdetails", "emailId = ? AND password = ?");
 
         String userID = getMotherboardSN.getMotherboardSN();
 
-        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomdbms.currentuser", "id, fullName, emailId, phoneNumber, gender, college", "?,?,?,?,?,?");
+        String updateCurrentUserQuery = DBUtils.prepareReplaceQuery("classroomdbms.currentuser", "id, emailId, type", "?,?,?");
 
-        String[] status = new String[6];
+        String[] status = new String[10];
 
         try {
             con = DBUtils.getConnection();
-            stmt = con.prepareStatement(query);
-            stmt.setString(1, userName);
-            stmt.setString(2, userName);
-            stmt.setString(3, password);
+            stmt = con.prepareStatement(facultyQuery);
+            stmt.setString(1, emailId);
+            stmt.setString(2, password);
             rs = stmt.executeQuery();
+
+            stmt1 = con.prepareStatement(studentQuery);
+            stmt1.setString(1, emailId);
+            stmt1.setString(2, password);
+            rs1 = stmt1.executeQuery();
 
             rs.last();
             int size = rs.getRow();
             rs.beforeFirst();
 
-            if (size>0) {
+            rs1.last();
+            int size1 = rs1.getRow();
+            rs1.beforeFirst();
+
+            if (size > 0) {
                 rs.next();
                 status[0] = "success";
-                status[1] = rs.getString("fullName");
-                status[2] = rs.getString("emailId");
-                status[3] = rs.getString("phoneNumber");
-                status[4] = rs.getString("gender");
-                status[5] = rs.getString("college");
+                status[1] = "faculty";
+                status[2] = rs.getString("firstName");
+                status[3] = rs.getString("lastName");
+                status[4] = rs.getString("emailId");
+                status[5] = rs.getString("designation");
+                status[6] = rs.getString("phoneNumber");
 
                 stmt = con.prepareStatement(updateCurrentUserQuery);
                 stmt.setString(1, userID);
-                stmt.setString(2, status[1]);
-                stmt.setString(3, status[2]);
-                stmt.setString(4, status[3]);
-                stmt.setString(5, status[4]);
-                stmt.setString(6, status[5]);
+                stmt.setString(2, status[4]);
+                stmt.setString(3, "faculty");
+                stmt.executeUpdate();
+            } else if (size1 > 0) {
+                rs1.next();
+                status[0] = "success";
+                status[1] = "student";
+                status[2] = rs1.getString("firstName");
+                status[3] = rs1.getString("lastName");
+                status[4] = rs1.getString("emailId");
+                status[5] = rs1.getString("dob");
+                status[6] = rs1.getString("phoneNumber");
+                status[7] = rs1.getString("gender");
+                status[8] = rs1.getString("college");
+
+                stmt = con.prepareStatement(updateCurrentUserQuery);
+                stmt.setString(1, userID);
+                stmt.setString(2, status[4]);
+                stmt.setString(3, "student");
                 stmt.executeUpdate();
             }
 
@@ -58,6 +82,7 @@ public class dbLoginCheck {
             status[0] = e.getMessage();
         } finally {
             DBUtils.closeAll(rs, stmt, con);
+            DBUtils.closeAll(rs1, stmt1, con);
             return status;
         }
     }

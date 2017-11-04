@@ -1,7 +1,7 @@
 package com.ClassroomDBMS.main.windows.signUp;
 
 import com.ClassroomDBMS.database.signIn.dbSignUp;
-import com.ClassroomDBMS.main.functions.profileFaculty;
+import com.ClassroomDBMS.main.functions.profileStudent;
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class facultySignUp {
+public class studentSignUp {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -88,18 +88,35 @@ public class facultySignUp {
         confirmPassword.setPromptText("Confirm password");
         confirmPassword.setStyle("-fx-border-radius: 100");
 
-        TextField designation = new TextField();
-        designation.setPromptText("Designation");
-        designation.setStyle("-fx-border-radius: 100");
+        TextField dob = new TextField();
+        dob.setPromptText("Date of Birth (DD-MM-YYYY)");
+        dob.setStyle("-fx-border-radius: 100");
 
         TextField phoneNumber = new TextField();
         phoneNumber.setPromptText("Phone Number");
         phoneNumber.setStyle("-fx-border-radius: 100");
 
+        HBox genderCollection = new HBox(10);
+        Label genderLabel = new Label("Gender: ");
+        genderLabel.setFont(new Font("Cambria", 20));
+        genderLabel.setTextFill(Color.web("#5a5a5a"));
+        ComboBox genderComboBox = new ComboBox();
+        genderComboBox.getItems().addAll(
+                "Male",
+                "Female"
+        );
+        genderComboBox.setPrefWidth(247);
+        genderComboBox.getSelectionModel().selectFirst();
+        genderCollection.getChildren().addAll(genderLabel, genderComboBox);
+
+        TextField college = new TextField();
+        college.setPromptText("College Name");
+        college.setStyle("-fx-border-radius: 100");
+
         Label error = new Label();
         error.setTextFill(Color.web("red"));
 
-        vb.getChildren().addAll(firstName, lastName, email, password, confirmPassword, designation, phoneNumber, error);
+        vb.getChildren().addAll(firstName, lastName, email, password, confirmPassword, dob, phoneNumber, genderCollection, college, error);
 
         signUpPane.setCenter(vb);
 
@@ -128,14 +145,14 @@ public class facultySignUp {
                 error.setText("Password and confirm password don't match");
             else if (phoneNumber.getText().isEmpty())
                 error.setText("Phone Number can't be empty");
-            else if (designation.getText().isEmpty())
-                error.setText("designation can't be empty");
             else if (!validatePhoneNumber(phoneNumber.getText()))
-                error.setText("Phone Number incorrect");
+                error.setText("Phone Number is incorrect");
+            else if (college.getText().isEmpty())
+                error.setText("college name can't be empty");
             else {
-                status = dbSignUp.facultySignUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), designation.getText(), phoneNumber.getText());
+                status = dbSignUp.studentSignUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), dob.getText(), phoneNumber.getText(), genderComboBox.getValue().toString(), college.getText());
                 if (status[0].equals("success")) {
-                    main.window.setScene(profileFaculty.main(status));
+                    main.window.setScene(profileStudent.main(status));
                     signUpStage.close();
                 } else {
                     error.setText(status[0]);
@@ -170,4 +187,5 @@ public class facultySignUp {
         Matcher matcher = NUMBERS_REGEX.matcher(phStr);
         return matcher.find();
     }
+
 }

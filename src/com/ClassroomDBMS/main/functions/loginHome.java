@@ -1,9 +1,9 @@
 package com.ClassroomDBMS.main.functions;
 
-import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.main.windows.login.userLogin;
-import com.ClassroomDBMS.main.windows.signUp.userSignUp;
+import com.ClassroomDBMS.main.windows.signUp.facultySignUp;
 
+import com.ClassroomDBMS.main.windows.signUp.studentSignUp;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
@@ -38,25 +38,38 @@ public class loginHome {
         login.setFont(new Font("Cambria", 20));
         login.setTextFill(Color.web("#ededed"));
 
-        Label register = GlyphsDude.createIconLabel( FontAwesomeIcon.USER_PLUS,
-                "Register",
+        Label registerFaculty = GlyphsDude.createIconLabel( FontAwesomeIcon.USER_PLUS,
+                "Register Faculty |",
                 "16",
                 "18",
                 ContentDisplay.LEFT );
-        register.setFont(new Font("Cambria", 20));
-        register.setTextFill(Color.web("#ededed"));
+        registerFaculty.setFont(new Font("Cambria", 20));
+        registerFaculty.setTextFill(Color.web("#ededed"));
+
+        Label registerStudent = GlyphsDude.createIconLabel( FontAwesomeIcon.USER_PLUS,
+                "Register Student",
+                "16",
+                "18",
+                ContentDisplay.LEFT );
+        registerStudent.setFont(new Font("Cambria", 20));
+        registerStudent.setTextFill(Color.web("#ededed"));
 
         login.setOnMouseClicked(e->{
             userLogin ob = new userLogin();
             ob.userLogin();
         });
 
-        register.setOnMouseClicked(e->{
-            userSignUp ob = new userSignUp();
-            ob.userSignUp();
+        registerFaculty.setOnMouseClicked(e->{
+            facultySignUp ob = new facultySignUp();
+            ob.signUp();
         });
 
-        headerVB.getChildren().addAll(login,register);
+        registerStudent.setOnMouseClicked(e->{
+            studentSignUp ob =  new studentSignUp();
+            ob.signUp();
+        });
+
+        headerVB.getChildren().addAll(login,registerFaculty, registerStudent);
         headerlayout.setTop(headerVB);
 
         Label title = new Label("Classroom DBMS");

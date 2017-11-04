@@ -1,14 +1,13 @@
 package com.ClassroomDBMS.main.functions;
 
-import com.ClassroomDBMS.main.templates.Home.courseInfo;
-import com.ClassroomDBMS.main.templates.tutorialSubmission.submissions;
-import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.database.signIn.deleteAccount;
 import com.ClassroomDBMS.database.signIn.userSignOut;
+import com.ClassroomDBMS.main.templates.Home.courseInfo;
+import com.ClassroomDBMS.main.templates.editProfile.updateUserDetails;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
-import com.ClassroomDBMS.main.templates.editProfile.*;
 import com.ClassroomDBMS.main.templates.speakouts.notices;
-
+import com.ClassroomDBMS.main.templates.tutorialSubmission.submissions;
+import com.ClassroomDBMS.main.windows.home.main;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
@@ -25,11 +24,11 @@ import javafx.scene.text.Font;
 
 import java.util.Optional;
 
-public class profileStudent {
+public class profileFaculty {
 
     public static Label fullName;
     public static Label emailID;
-    public static Label phoneNumbercollege;
+    public static Label phoneNumberDesignation;
     public static Label course;
     public static Label findPeople;
     public static Label speakOut;
@@ -65,10 +64,10 @@ public class profileStudent {
         emailID.setFont(new Font("Cambria", 15));
         emailID.setTextFill(Color.web("#ededed"));
 
-        phoneNumbercollege = new Label(profileDetails[6] + ",  " + profileDetails[8]);
-        phoneNumbercollege.setFont(new Font("Cambria", 15));
-        phoneNumbercollege.setTextFill(Color.web("#ededed"));
-        phoneNumbercollege.setWrapText(true);
+        phoneNumberDesignation = new Label(profileDetails[6] + ",  " + profileDetails[5]);
+        phoneNumberDesignation.setFont(new Font("Cambria", 15));
+        phoneNumberDesignation.setTextFill(Color.web("#ededed"));
+        phoneNumberDesignation.setWrapText(true);
 
         HBox profileSetting = new HBox(10);
         profileSetting.setAlignment(Pos.TOP_CENTER);
@@ -81,7 +80,7 @@ public class profileStudent {
 
         profileSetting.getChildren().addAll(editButton, deleteButton);
 
-        userData.getChildren().addAll(logo, fullName, emailID, phoneNumbercollege, profileSetting);
+        userData.getChildren().addAll(logo, fullName, emailID, phoneNumberDesignation, profileSetting);
         userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 2 0;-fx-underline: true;");
 
         options.setTop(userData);
@@ -222,7 +221,7 @@ public class profileStudent {
         Scene scene = new Scene(userOptions, 800, 500);
         scene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
 
-        String image = profileStudent.class.getResource("../resources/images/splash.jpg").toExternalForm();
+        String image = profileFaculty.class.getResource("../resources/images/splash.jpg").toExternalForm();
         optionData.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
                 "-fx-background-repeat: stretch;");
@@ -239,4 +238,5 @@ public class profileStudent {
         speakOut.setTextFill(Color.web(speakoutColor));
         submission.setTextFill(Color.web(submissionColor));
     }
+
 }

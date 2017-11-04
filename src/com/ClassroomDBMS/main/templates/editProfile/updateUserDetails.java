@@ -3,7 +3,7 @@ package com.ClassroomDBMS.main.templates.editProfile;
 import com.ClassroomDBMS.database.logIn.userLoggedIn;
 import com.ClassroomDBMS.database.updateProfile.*;
 import com.ClassroomDBMS.main.functions.getMotherboardSN;
-import com.ClassroomDBMS.main.functions.profile;
+import com.ClassroomDBMS.main.functions.profileStudent;
 
 import com.ClassroomDBMS.main.windows.home.main;
 import javafx.beans.property.BooleanProperty;
@@ -113,9 +113,9 @@ public class updateUserDetails {
                 if (status.equals("Success")){
                     errorIngeneral.setTextFill(Color.web("green"));
                     errorIngeneral.setText("Profile Saved Succcessfully");
-                    profile.fullName.setText(fullName.getText());
-                    profile.emailID.setText(emailId.getText());
-                    profile.phoneNumbercollege.setText(phoneNumber.getText()+", "+college.getText());
+                    profileStudent.fullName.setText(fullName.getText());
+                    profileStudent.emailID.setText(emailId.getText());
+                    profileStudent.phoneNumbercollege.setText(phoneNumber.getText()+", "+college.getText());
                 }
                 else
                     errorIngeneral.setText(status);
