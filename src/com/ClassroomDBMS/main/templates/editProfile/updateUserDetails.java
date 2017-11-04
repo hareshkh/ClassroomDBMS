@@ -33,56 +33,62 @@ public class updateUserDetails {
 
     final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
-    public BorderPane updateUserDetails(){
+    public BorderPane updateStudentDeatils() {
         String userID = getMotherboardSN.getMotherboardSN();
         String[] currentUserDetail = userLoggedIn.userLoggedIn(userID);
 
         BorderPane editprofile = new BorderPane();
 
         BorderPane general = new BorderPane();
-        general.setPadding(new Insets(10,100,30,100));
+        general.setPadding(new Insets(10, 100, 30, 100));
 
         VBox generalVB = new VBox(15);
         generalVB.setAlignment(Pos.TOP_LEFT);
-        generalVB.setPadding(new Insets(0,0,10,0));
+        generalVB.setPadding(new Insets(0, 0, 10, 0));
 
         Label generalLabel = new Label("Save details: ");
         generalLabel.setFont(new Font("Cambria", 25));
         generalLabel.setTextFill(Color.web("#5a5a5a"));
 
-        HBox nameEmailLabel = new HBox(50);
+        HBox nameLabel = new HBox(50);
 
-        TextField fullName = new TextField(currentUserDetail[1]);
-        fullName.setPromptText("full name like "+currentUserDetail[1]);
-        fullName.setStyle("-fx-focus-color: transparent;");
-        fullName.setPrefHeight(35);
-        fullName.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
+        TextField firstName = new TextField(currentUserDetail[2]);
+        firstName.setPromptText("First name like " + currentUserDetail[2]);
+        firstName.setStyle("-fx-focus-color: transparent;");
+        firstName.setPrefHeight(35);
+        firstName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && firstTime.get()) {
                 editprofile.requestFocus(); // Delegate the focus to container
                 firstTime.setValue(false); // Variable value changed for future references
             }
         });
 
-        TextField emailId = new TextField(currentUserDetail[2]);
-        emailId.setPromptText("Email Id like "+currentUserDetail[2]);
-        emailId.setStyle("-fx-focus-color: transparent;");
-        emailId.setPrefHeight(35);
+        TextField lastName = new TextField(currentUserDetail[3]);
+        lastName.setPromptText("Last name like " + currentUserDetail[3]);
+        lastName.setStyle("-fx-focus-color: transparent;");
+        lastName.setPrefHeight(35);
+        lastName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && firstTime.get()) {
+                editprofile.requestFocus(); // Delegate the focus to container
+                firstTime.setValue(false); // Variable value changed for future references
+            }
+        });
 
-        nameEmailLabel.getChildren().addAll(fullName,emailId);
+        nameLabel.getChildren().addAll(firstName, lastName);
 
         HBox phoneCollegeLabel = new HBox(50);
 
-        TextField phoneNumber = new TextField(currentUserDetail[3]);
-        phoneNumber.setPromptText("Phone Number like "+currentUserDetail[3]);
+        TextField phoneNumber = new TextField(currentUserDetail[6]);
+        phoneNumber.setPromptText("Phone Number like " + currentUserDetail[6]);
         phoneNumber.setStyle("-fx-focus-color: transparent;");
         phoneNumber.setPrefHeight(35);
 
-        TextField college = new TextField(currentUserDetail[5]);
-        college.setPromptText("College name like "+currentUserDetail[5]);
+        TextField college = new TextField(currentUserDetail[8]);
+        college.setPromptText("College name like " + currentUserDetail[8]);
         college.setStyle("-fx-focus-color: transparent;");
         college.setPrefHeight(35);
 
-        phoneCollegeLabel.getChildren().addAll(phoneNumber,college);
+        phoneCollegeLabel.getChildren().addAll(phoneNumber, college);
 
         Label errorIngeneral = new Label();
         errorIngeneral.setTextFill(Color.web("red"));
@@ -92,33 +98,33 @@ public class updateUserDetails {
         save.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent;");
         save.setTextFill(Color.web("#fff"));
         save.setCursor(Cursor.HAND);
-        save.setOnAction(e-> {
-            if (fullName.getText().isEmpty())
+        save.setOnAction(e -> {
+            if (firstName.getText().isEmpty())
                 errorIngeneral.setText("Full Name can't be set empty");
-            else if (emailId.getText().isEmpty())
-                errorIngeneral.setText("Email Id can't be set empty");
-            else if (!validate(emailId.getText()))
-                errorIngeneral.setText("Invalid Email Id");
+            else if (lastName.getText().isEmpty())
+                errorIngeneral.setText("Last Name can't be set empty");
             else if (phoneNumber.getText().isEmpty())
                 errorIngeneral.setText("Phone Number can't be set empty");
             else if (!validatePhoneNumber(phoneNumber.getText()))
                 errorIngeneral.setText("Incorrect mobile number");
-            else if(college.getText().isEmpty())
+            else if (college.getText().isEmpty())
                 errorIngeneral.setText("College Name can't be set empty");
-            else if(fullName.getText().equals(currentUserDetail[1]) && emailId.getText().equals(currentUserDetail[5]) && phoneNumber.getText().equals(currentUserDetail[3]) && college.getText().equals(currentUserDetail[5]))
+            else if (firstName.getText().equals(currentUserDetail[2])
+                    && lastName.getText().equals(currentUserDetail[3])
+                    && phoneNumber.getText().equals(currentUserDetail[6])
+                    && college.getText().equals(currentUserDetail[8]))
                 errorIngeneral.setText("No changes made.");
-            else{
-                String status = generalUpdate.generalUpdate(currentUserDetail[2],fullName.getText(),emailId.getText(),phoneNumber.getText(), college.getText());
+            else {
+                String status = generalUpdate.generalUpdateStudent(currentUserDetail[4], firstName.getText(), lastName.getText(), phoneNumber.getText(), college.getText());
 
-                if (status.equals("Success")){
+                if (status.equals("Success")) {
                     errorIngeneral.setTextFill(Color.web("green"));
                     errorIngeneral.setText("Profile Saved Succcessfully");
-                    profileStudent.fullName.setText(fullName.getText());
-                    profileStudent.emailID.setText(emailId.getText());
-                    profileStudent.phoneNumbercollege.setText(phoneNumber.getText()+", "+college.getText());
-                }
-                else
+                    profileStudent.fullName.setText(firstName.getText() + " " + lastName.getText());
+                    profileStudent.phoneNumbercollege.setText(phoneNumber.getText() + ", " + college.getText());
+                } else {
                     errorIngeneral.setText(status);
+                }
             }
             Task<Void> sleeper = new Task<Void>() {
                 @Override
@@ -131,24 +137,24 @@ public class updateUserDetails {
                     return null;
                 }
             };
-            sleeper.setOnSucceeded(ee-> {
+            sleeper.setOnSucceeded(ee -> {
                 errorIngeneral.setTextFill(Color.web("red"));
                 errorIngeneral.setText("");
             });
             new Thread(sleeper).start();
         });
 
-        generalVB.getChildren().addAll(generalLabel, nameEmailLabel, phoneCollegeLabel, errorIngeneral, save);
+        generalVB.getChildren().addAll(generalLabel, nameLabel, phoneCollegeLabel, errorIngeneral, save);
         general.setTop(generalVB);
 
         /////////////////////////////////////////////////////////////////////////////////////
 
         BorderPane password = new BorderPane();
-        password.setPadding(new Insets(0,100,50,100));
+        password.setPadding(new Insets(0, 100, 50, 100));
 
         VBox passwordVB = new VBox(15);
         passwordVB.setAlignment(Pos.TOP_LEFT);
-        passwordVB.setPadding(new Insets(0,0,10,0));
+        passwordVB.setPadding(new Insets(0, 0, 10, 0));
 
         Label passwordLabel = new Label("Update Password: ");
         passwordLabel.setFont(new Font("Cambria", 25));
@@ -181,23 +187,22 @@ public class updateUserDetails {
         update.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent;");
         update.setTextFill(Color.web("#fff"));
         update.setCursor(Cursor.HAND);
-        update.setOnAction(e-> {
+        update.setOnAction(e -> {
             if (oldPass.getText().isEmpty())
                 errorInpassword.setText("Old Password can't be empty");
             else if (newPass.getText().isEmpty())
                 errorInpassword.setText("New Password can't be empty");
             else if (confirmPass.getText().isEmpty())
                 errorInpassword.setText("Confirm Password can't be empty");
-            else if(!newPass.getText().equals(confirmPass.getText()))
+            else if (!newPass.getText().equals(confirmPass.getText()))
                 errorInpassword.setText("New and confirm password don't match");
-            else{
-                String status = passwordUpdate.passwordUpdate(currentUserDetail[2],oldPass.getText(),newPass.getText());
+            else {
+                String status = passwordUpdate.passwordUpdate(currentUserDetail[2], oldPass.getText(), newPass.getText());
 
-                if (status.equals("Success")){
+                if (status.equals("Success")) {
                     errorInpassword.setTextFill(Color.web("green"));
                     errorInpassword.setText("Password Update successful.");
-                }
-                else
+                } else
                     errorInpassword.setText(status);
             }
 
@@ -212,7 +217,7 @@ public class updateUserDetails {
                     return null;
                 }
             };
-            sleeper.setOnSucceeded(ee-> {
+            sleeper.setOnSucceeded(ee -> {
                 errorInpassword.setTextFill(Color.web("red"));
                 errorInpassword.setText("");
             });
@@ -222,22 +227,240 @@ public class updateUserDetails {
         passwordVB.getChildren().addAll(passwordLabel, oldNewConfirmpasswordLabel, errorInpassword, update);
         password.setTop(passwordVB);
 
-        fullName.setPrefWidth(0.4*main.window.getWidth());
-        emailId.setPrefWidth(0.4*main.window.getWidth());
-        phoneNumber.setPrefWidth(0.4*main.window.getWidth());
-        college.setPrefWidth(0.4*main.window.getWidth());
-        oldPass.setPrefWidth(0.3*main.window.getWidth());
-        newPass.setPrefWidth(0.3*main.window.getWidth());
-        confirmPass.setPrefWidth(0.3*main.window.getWidth());
+        firstName.setPrefWidth(0.4 * main.window.getWidth());
+        lastName.setPrefWidth(0.4 * main.window.getWidth());
+        phoneNumber.setPrefWidth(0.4 * main.window.getWidth());
+        college.setPrefWidth(0.4 * main.window.getWidth());
+        oldPass.setPrefWidth(0.3 * main.window.getWidth());
+        newPass.setPrefWidth(0.3 * main.window.getWidth());
+        confirmPass.setPrefWidth(0.3 * main.window.getWidth());
 
-        main.window.widthProperty().addListener(e->{
-            fullName.setPrefWidth(0.4*main.window.getWidth());
-            emailId.setPrefWidth(0.4*main.window.getWidth());
-            phoneNumber.setPrefWidth(0.4*main.window.getWidth());
-            college.setPrefWidth(0.4*main.window.getWidth());
-            oldPass.setPrefWidth(0.3*main.window.getWidth());
-            newPass.setPrefWidth(0.3*main.window.getWidth());
-            confirmPass.setPrefWidth(0.3*main.window.getWidth());
+        main.window.widthProperty().addListener(e -> {
+            firstName.setPrefWidth(0.4 * main.window.getWidth());
+            lastName.setPrefWidth(0.4 * main.window.getWidth());
+            phoneNumber.setPrefWidth(0.4 * main.window.getWidth());
+            college.setPrefWidth(0.4 * main.window.getWidth());
+            oldPass.setPrefWidth(0.3 * main.window.getWidth());
+            newPass.setPrefWidth(0.3 * main.window.getWidth());
+            confirmPass.setPrefWidth(0.3 * main.window.getWidth());
+        });
+
+        editprofile.setTop(general);
+        editprofile.setCenter(password);
+
+        return editprofile;
+    }
+
+    public BorderPane updateFacultyDetails() {
+        String userID = getMotherboardSN.getMotherboardSN();
+        String[] currentUserDetail = userLoggedIn.userLoggedIn(userID);
+
+        BorderPane editprofile = new BorderPane();
+
+        BorderPane general = new BorderPane();
+        general.setPadding(new Insets(10, 100, 30, 100));
+
+        VBox generalVB = new VBox(15);
+        generalVB.setAlignment(Pos.TOP_LEFT);
+        generalVB.setPadding(new Insets(0, 0, 10, 0));
+
+        Label generalLabel = new Label("Save details: ");
+        generalLabel.setFont(new Font("Cambria", 25));
+        generalLabel.setTextFill(Color.web("#5a5a5a"));
+
+        HBox nameLabel = new HBox(50);
+
+        TextField firstName = new TextField(currentUserDetail[2]);
+        firstName.setPromptText("First name like " + currentUserDetail[2]);
+        firstName.setStyle("-fx-focus-color: transparent;");
+        firstName.setPrefHeight(35);
+        firstName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && firstTime.get()) {
+                editprofile.requestFocus(); // Delegate the focus to container
+                firstTime.setValue(false); // Variable value changed for future references
+            }
+        });
+
+        TextField lastName = new TextField(currentUserDetail[3]);
+        lastName.setPromptText("Last name like " + currentUserDetail[3]);
+        lastName.setStyle("-fx-focus-color: transparent;");
+        lastName.setPrefHeight(35);
+        lastName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && firstTime.get()) {
+                editprofile.requestFocus(); // Delegate the focus to container
+                firstTime.setValue(false); // Variable value changed for future references
+            }
+        });
+
+        nameLabel.getChildren().addAll(firstName, lastName);
+
+        HBox designatioPhoneLabel = new HBox(50);
+
+        TextField designation = new TextField(currentUserDetail[5]);
+        designation.setPromptText("Designation name like " + currentUserDetail[5]);
+        designation.setStyle("-fx-focus-color: transparent;");
+        designation.setPrefHeight(35);
+
+        TextField phoneNumber = new TextField(currentUserDetail[6]);
+        phoneNumber.setPromptText("Phone Number like " + currentUserDetail[6]);
+        phoneNumber.setStyle("-fx-focus-color: transparent;");
+        phoneNumber.setPrefHeight(35);
+
+        designatioPhoneLabel.getChildren().addAll(designation, phoneNumber);
+
+        Label errorIngeneral = new Label();
+        errorIngeneral.setTextFill(Color.web("red"));
+
+        Button save = new Button("SAVE");
+        save.setFont(new Font("Cambria", 18));
+        save.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent;");
+        save.setTextFill(Color.web("#fff"));
+        save.setCursor(Cursor.HAND);
+        save.setOnAction(e -> {
+            if (firstName.getText().isEmpty())
+                errorIngeneral.setText("First Name can't be set empty");
+            else if (lastName.getText().isEmpty())
+                errorIngeneral.setText("Last Name can't be set empty");
+            else if (phoneNumber.getText().isEmpty())
+                errorIngeneral.setText("Phone Number can't be set empty");
+            else if (!validatePhoneNumber(phoneNumber.getText()))
+                errorIngeneral.setText("Incorrect mobile number");
+            else if (designation.getText().isEmpty())
+                errorIngeneral.setText("Designation can't be set empty");
+            else if (firstName.getText().equals(currentUserDetail[2])
+                    && lastName.getText().equals(currentUserDetail[3])
+                    && phoneNumber.getText().equals(currentUserDetail[6])
+                    && designation.getText().equals(currentUserDetail[5]))
+                errorIngeneral.setText("No changes made.");
+            else {
+                String status = generalUpdate.generalUpdateFaculty(currentUserDetail[4], firstName.getText(), lastName.getText(), designation.getText(), phoneNumber.getText());
+
+                if (status.equals("Success")) {
+                    errorIngeneral.setTextFill(Color.web("green"));
+                    errorIngeneral.setText("Profile Saved Succcessfully");
+                    profileStudent.fullName.setText(firstName.getText() + " " + lastName.getText());
+                    profileStudent.phoneNumbercollege.setText(phoneNumber.getText() + ", " + designation.getText());
+                } else {
+                    errorIngeneral.setText(status);
+                }
+            }
+            Task<Void> sleeper = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+            };
+            sleeper.setOnSucceeded(ee -> {
+                errorIngeneral.setTextFill(Color.web("red"));
+                errorIngeneral.setText("");
+            });
+            new Thread(sleeper).start();
+        });
+
+        generalVB.getChildren().addAll(generalLabel, nameLabel, designatioPhoneLabel, errorIngeneral, save);
+        general.setTop(generalVB);
+
+        /////////////////////////////////////////////////////////////////////////////////////
+
+        BorderPane password = new BorderPane();
+        password.setPadding(new Insets(0, 100, 50, 100));
+
+        VBox passwordVB = new VBox(15);
+        passwordVB.setAlignment(Pos.TOP_LEFT);
+        passwordVB.setPadding(new Insets(0, 0, 10, 0));
+
+        Label passwordLabel = new Label("Update Password: ");
+        passwordLabel.setFont(new Font("Cambria", 25));
+        passwordLabel.setTextFill(Color.web("#5a5a5a"));
+
+        HBox oldNewConfirmpasswordLabel = new HBox(50);
+
+        TextField oldPass = new TextField();
+        oldPass.setPromptText("Old Password");
+        oldPass.setStyle("-fx-focus-color: transparent;");
+        oldPass.setPrefHeight(35);
+
+        TextField newPass = new TextField();
+        newPass.setPromptText("New Password");
+        newPass.setStyle("-fx-focus-color: transparent;");
+        newPass.setPrefHeight(35);
+
+        TextField confirmPass = new TextField();
+        confirmPass.setPromptText("Confirm Password");
+        confirmPass.setStyle("-fx-focus-color: transparent;");
+        confirmPass.setPrefHeight(35);
+
+        oldNewConfirmpasswordLabel.getChildren().addAll(oldPass, newPass, confirmPass);
+
+        Label errorInpassword = new Label();
+        errorInpassword.setTextFill(Color.web("red"));
+
+        Button update = new Button("UPDATE");
+        update.setFont(new Font("Cambria", 18));
+        update.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent;");
+        update.setTextFill(Color.web("#fff"));
+        update.setCursor(Cursor.HAND);
+        update.setOnAction(e -> {
+            if (oldPass.getText().isEmpty())
+                errorInpassword.setText("Old Password can't be empty");
+            else if (newPass.getText().isEmpty())
+                errorInpassword.setText("New Password can't be empty");
+            else if (confirmPass.getText().isEmpty())
+                errorInpassword.setText("Confirm Password can't be empty");
+            else if (!newPass.getText().equals(confirmPass.getText()))
+                errorInpassword.setText("New and confirm password don't match");
+            else {
+                String status = passwordUpdate.passwordUpdate(currentUserDetail[2], oldPass.getText(), newPass.getText());
+
+                if (status.equals("Success")) {
+                    errorInpassword.setTextFill(Color.web("green"));
+                    errorInpassword.setText("Password Update successful.");
+                } else
+                    errorInpassword.setText(status);
+            }
+
+            Task<Void> sleeper = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+            };
+            sleeper.setOnSucceeded(ee -> {
+                errorInpassword.setTextFill(Color.web("red"));
+                errorInpassword.setText("");
+            });
+            new Thread(sleeper).start();
+        });
+
+        passwordVB.getChildren().addAll(passwordLabel, oldNewConfirmpasswordLabel, errorInpassword, update);
+        password.setTop(passwordVB);
+
+        firstName.setPrefWidth(0.4 * main.window.getWidth());
+        lastName.setPrefWidth(0.4 * main.window.getWidth());
+        phoneNumber.setPrefWidth(0.4 * main.window.getWidth());
+        designation.setPrefWidth(0.4 * main.window.getWidth());
+        oldPass.setPrefWidth(0.3 * main.window.getWidth());
+        newPass.setPrefWidth(0.3 * main.window.getWidth());
+        confirmPass.setPrefWidth(0.3 * main.window.getWidth());
+
+        main.window.widthProperty().addListener(e -> {
+            firstName.setPrefWidth(0.4 * main.window.getWidth());
+            lastName.setPrefWidth(0.4 * main.window.getWidth());
+            phoneNumber.setPrefWidth(0.4 * main.window.getWidth());
+            designation.setPrefWidth(0.4 * main.window.getWidth());
+            oldPass.setPrefWidth(0.3 * main.window.getWidth());
+            newPass.setPrefWidth(0.3 * main.window.getWidth());
+            confirmPass.setPrefWidth(0.3 * main.window.getWidth());
         });
 
         editprofile.setTop(general);
@@ -247,12 +470,12 @@ public class updateUserDetails {
     }
 
     public static boolean validate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
 
     public static boolean validatePhoneNumber(String phStr) {
-        Matcher matcher = NUMBERS_REGEX .matcher(phStr);
+        Matcher matcher = NUMBERS_REGEX.matcher(phStr);
         return matcher.find();
     }
 }

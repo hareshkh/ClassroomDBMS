@@ -167,7 +167,7 @@ public class profileStudent {
         editButton.setOnAction(e -> {
             e.consume();
             updateUserDetails ob = new updateUserDetails();
-            optionData.setTop(ob.updateUserDetails());
+            optionData.setTop(ob.updateStudentDeatils());
             toggleTextColors("#171717", "#171717", "#171717", "#171717");
         });
 
