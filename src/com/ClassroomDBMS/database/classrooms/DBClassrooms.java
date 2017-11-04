@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DBClassrooms {
 
@@ -53,7 +52,7 @@ public class DBClassrooms {
         return status;
     }
 
-    public static ArrayList<ClassroomModel> getAllClassrooms(String faculty_emailId) {
+    public static ArrayList<ClassroomModel> getAllClassroomsByEmail(String faculty_emailId) {
 
         ArrayList<ClassroomModel> result = new ArrayList<>();
 
@@ -67,6 +66,72 @@ public class DBClassrooms {
             con = DBUtils.getConnection();
             stmt = con.prepareStatement(query);
             stmt.setString(1, faculty_emailId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                result.add(new ClassroomModel(rs.getString("courseId"), rs.getString("faculty_emailId"),
+                        rs.getString("course_name"), rs.getString("lecture_timing"),
+                        rs.getString("tutorial_timing"), rs.getString("marks_distribution"),
+                        rs.getString("attendance_rule"), rs.getString("grading_rule"),
+                        rs.getString("lecture_hall"), rs.getString("literature_link")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtils.closeStatement(stmt);
+            DBUtils.closeConnection(con);
+        }
+
+        return result;
+    }
+
+    public static ClassroomModel getClassroomById(String courseId) {
+        ClassroomModel classroomModel = null;
+
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.classroomdetails", "courseId = ?");
+
+        try {
+            con = DBUtils.getConnection();
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, courseId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                classroomModel = new ClassroomModel(rs.getString("courseId"), rs.getString("faculty_emailId"),
+                        rs.getString("course_name"), rs.getString("lecture_timing"),
+                        rs.getString("tutorial_timing"), rs.getString("marks_distribution"),
+                        rs.getString("attendance_rule"), rs.getString("grading_rule"),
+                        rs.getString("lecture_hall"), rs.getString("literature_link"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtils.closeStatement(stmt);
+            DBUtils.closeConnection(con);
+        }
+
+        return classroomModel;
+    }
+
+    public static ArrayList<ClassroomModel> getAllClassrooms() {
+
+        ArrayList<ClassroomModel> result = new ArrayList<>();
+
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.classroomdetails", "true");
+
+        try {
+            con = DBUtils.getConnection();
+            stmt = con.prepareStatement(query);
             rs = stmt.executeQuery();
 
             while (rs.next()) {

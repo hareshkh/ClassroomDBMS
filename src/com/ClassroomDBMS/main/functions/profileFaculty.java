@@ -104,7 +104,7 @@ public class profileFaculty {
 
         buttons = new VBox(15);
 
-        ArrayList<ClassroomModel> classrooms = DBClassrooms.getAllClassrooms(profileDetails[4]);
+        ArrayList<ClassroomModel> classrooms = DBClassrooms.getAllClassroomsByEmail(profileDetails[4]);
 
         for (ClassroomModel model : classrooms) {
             course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,
@@ -242,7 +242,7 @@ public class profileFaculty {
     }
 
     public static void updateCourses() {
-        ArrayList<ClassroomModel> classrooms = DBClassrooms.getAllClassrooms(facultyEmailId);
+        ArrayList<ClassroomModel> classrooms = DBClassrooms.getAllClassroomsByEmail(facultyEmailId);
         buttons.getChildren().clear();
         for (ClassroomModel model : classrooms) {
             course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,

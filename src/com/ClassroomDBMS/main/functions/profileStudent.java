@@ -1,14 +1,16 @@
 package com.ClassroomDBMS.main.functions;
 
-import com.ClassroomDBMS.main.templates.Home.courseInfo;
-import com.ClassroomDBMS.main.templates.tutorialSubmission.submissions;
-import com.ClassroomDBMS.main.windows.home.main;
 import com.ClassroomDBMS.database.signIn.deleteAccount;
 import com.ClassroomDBMS.database.signIn.userSignOut;
+import com.ClassroomDBMS.database.studentclassrooms.DBStudentClassrooms;
+import com.ClassroomDBMS.main.models.StudentCourseModel;
+import com.ClassroomDBMS.main.templates.Home.courseInfo;
+import com.ClassroomDBMS.main.templates.SelectCourses.SelectCoursesTemplate;
+import com.ClassroomDBMS.main.templates.StudentCourse.StudentCourseTemplate;
+import com.ClassroomDBMS.main.templates.editProfile.updateUserDetails;
 import com.ClassroomDBMS.main.templates.search.peopleSearch;
-import com.ClassroomDBMS.main.templates.editProfile.*;
 import com.ClassroomDBMS.main.templates.speakouts.notices;
-
+import com.ClassroomDBMS.main.windows.home.main;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
@@ -23,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class profileStudent {
@@ -31,18 +34,32 @@ public class profileStudent {
     public static Label emailID;
     public static Label phoneNumbercollege;
     public static Label course;
+    public static Label selectCourse;
     public static Label findPeople;
     public static Label speakOut;
-    public static Label submission;
+
+    public static VBox buttons;
+
+    public static BorderPane optionDetails;
+    public static BorderPane optionData;
+    public static BorderPane userOptions;
+    public static BorderPane options;
+
+    public static StackPane coursePane, selectCoursePane, findPeoplePane, speakOutPane;
+
+    public static String studentEmailId;
 
     public static Scene main(String[] profileDetails) {
-        BorderPane userOptions = new BorderPane();
 
-        BorderPane optionDetails = new BorderPane();
+        studentEmailId = profileDetails[4];
+
+        userOptions = new BorderPane();
+
+        optionDetails = new BorderPane();
         optionDetails.setStyle("-fx-background-color: #171717");
         optionDetails.setPrefWidth(220);
 
-        BorderPane options = new BorderPane();
+        options = new BorderPane();
         VBox userData = new VBox(10);
         userData.setPadding(new Insets(0, 0, 20, 0));
         userData.setAlignment(Pos.TOP_CENTER);
@@ -86,20 +103,48 @@ public class profileStudent {
 
         options.setTop(userData);
 
-        VBox buttons = new VBox(15);
+        buttons = new VBox(15);
 
-        course = GlyphsDude.createIconLabel(FontAwesomeIcon.USERS,
-                "  Home",
+        ArrayList<StudentCourseModel> studentCourseModels = DBStudentClassrooms.getAllCoursesByEmailId(studentEmailId);
+
+        for (StudentCourseModel model : studentCourseModels) {
+            course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,
+                    model.getCourseId(),
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            course.setFont(new Font("Cambria", 20));
+            course.setTextFill(Color.web("#171717"));
+            course.setPadding(new Insets(10));
+            coursePane = new StackPane(course);
+            coursePane.setAlignment(Pos.BASELINE_LEFT);
+            coursePane.setStyle("-fx-background-color: grey");
+            coursePane.setCursor(Cursor.HAND);
+
+            buttons.getChildren().add(coursePane);
+
+            coursePane.setOnMouseClicked(e -> {
+                optionData.setTop(StudentCourseTemplate.getStudentCourseDetailsView(model.getStudentEmailId(), model.getCourseId()));
+                toggleTextColors("red", "#171717", "#171717", "#171717");
+            });
+
+        }
+
+        selectCourse = GlyphsDude.createIconLabel(FontAwesomeIcon.USERS,
+                " Select Courses",
                 "20",
                 "18",
                 ContentDisplay.LEFT);
-        course.setFont(new Font("Cambria", 20));
-        course.setTextFill(Color.web("#171717"));
-        course.setPadding(new Insets(10));
-        StackPane coursePane = new StackPane(course);
-        coursePane.setAlignment(Pos.BASELINE_LEFT);
-        coursePane.setStyle("-fx-background-color: grey");
-        coursePane.setCursor(Cursor.HAND);
+        selectCourse.setFont(new Font("Cambria", 20));
+        selectCourse.setTextFill(Color.web("#171717"));
+        selectCourse.setPadding(new Insets(10));
+        selectCoursePane = new StackPane(selectCourse);
+        selectCoursePane.setAlignment(Pos.BASELINE_LEFT);
+        selectCoursePane.setStyle("-fx-background-color: grey");
+        selectCoursePane.setCursor(Cursor.HAND);
+        selectCoursePane.setOnMouseClicked(e -> {
+            optionData.setTop(SelectCoursesTemplate.getSelectCourseView(studentEmailId));
+        });
 
         findPeople = GlyphsDude.createIconLabel(FontAwesomeIcon.SEARCH,
                 "  Find Students",
@@ -109,7 +154,7 @@ public class profileStudent {
         findPeople.setFont(new Font("Cambria", 20));
         findPeople.setTextFill(Color.web("#171717"));
         findPeople.setPadding(new Insets(10));
-        StackPane findPeoplePane = new StackPane(findPeople);
+        findPeoplePane = new StackPane(findPeople);
         findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
         findPeoplePane.setStyle("-fx-background-color: grey");
         findPeoplePane.setCursor(Cursor.HAND);
@@ -122,25 +167,12 @@ public class profileStudent {
         speakOut.setFont(new Font("Cambria", 20));
         speakOut.setTextFill(Color.web("#171717"));
         speakOut.setPadding(new Insets(10));
-        StackPane speakOutPane = new StackPane(speakOut);
+        speakOutPane = new StackPane(speakOut);
         speakOutPane.setAlignment(Pos.BASELINE_LEFT);
         speakOutPane.setStyle("-fx-background-color: grey");
         speakOutPane.setCursor(Cursor.HAND);
 
-        submission = GlyphsDude.createIconLabel(FontAwesomeIcon.UPLOAD,
-                "  Submission",
-                "20",
-                "18",
-                ContentDisplay.LEFT);
-        submission.setFont(new Font("Cambria", 20));
-        submission.setTextFill(Color.web("#171717"));
-        submission.setPadding(new Insets(10));
-        StackPane submissionPane = new StackPane(submission);
-        submissionPane.setAlignment(Pos.BASELINE_LEFT);
-        submissionPane.setStyle("-fx-background-color: grey");
-        submissionPane.setCursor(Cursor.HAND);
-
-        buttons.getChildren().addAll(coursePane, findPeoplePane, speakOutPane, submissionPane);
+        buttons.getChildren().addAll(selectCoursePane, findPeoplePane, speakOutPane);
         options.setCenter(buttons);
 
         Label logout = GlyphsDude.createIconLabel(FontAwesomeIcon.SIGN_OUT,
@@ -159,10 +191,7 @@ public class profileStudent {
         options.setBottom(logoutPane);
         optionDetails.setCenter(options);
 
-        BorderPane optionData = new BorderPane();
-
-        optionData.setTop(courseInfo.TAinfo());
-        toggleTextColors("red", "#171717", "#171717", "#171717");
+        optionData = new BorderPane();
 
         editButton.setOnAction(e -> {
             e.consume();
@@ -188,11 +217,6 @@ public class profileStudent {
             }
         });
 
-        coursePane.setOnMouseClicked(e -> {
-            optionData.setTop(courseInfo.TAinfo());
-            toggleTextColors("red", "#171717", "#171717", "#171717");
-        });
-
         peopleSearch ob = new peopleSearch();
         findPeoplePane.setOnMouseClicked(e -> {
             optionData.setTop(ob.peoplesearch());
@@ -203,12 +227,6 @@ public class profileStudent {
             optionData.setTop(notices.notices(emailID.getText()));
             toggleTextColors("#171717", "#171717", "red", "#171717");
             notices.messages.requestFocus();
-        });
-
-        submissionPane.setOnMouseClicked(e -> {
-            optionData.setTop(submissions.tutorials(emailID.getText()));
-            toggleTextColors("#171717", "#171717", "#171717", "red");
-            submissions.tutorials.requestFocus();
         });
 
         logoutPane.setOnMouseClicked(e -> {
@@ -234,9 +252,41 @@ public class profileStudent {
     }
 
     public static void toggleTextColors(String courseColor, String findColor, String speakoutColor, String submissionColor) {
-        course.setTextFill(Color.web(courseColor));
-        findPeople.setTextFill(Color.web(findColor));
-        speakOut.setTextFill(Color.web(speakoutColor));
-        submission.setTextFill(Color.web(submissionColor));
+//        course.setTextFill(Color.web(courseColor));
+//        findPeople.setTextFill(Color.web(findColor));
+//        speakOut.setTextFill(Color.web(speakoutColor));
+//        submission.setTextFill(Color.web(submissionColor));
     }
+
+    public static void updateCourses() {
+        ArrayList<StudentCourseModel> studentCourseModels = DBStudentClassrooms.getAllCoursesByEmailId(studentEmailId);
+
+        for (StudentCourseModel model : studentCourseModels) {
+            buttons.getChildren().clear();
+            course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,
+                    model.getCourseId(),
+                    "20",
+                    "18",
+                    ContentDisplay.LEFT);
+            course.setFont(new Font("Cambria", 20));
+            course.setTextFill(Color.web("#171717"));
+            course.setPadding(new Insets(10));
+            coursePane = new StackPane(course);
+            coursePane.setAlignment(Pos.BASELINE_LEFT);
+            coursePane.setStyle("-fx-background-color: grey");
+            coursePane.setCursor(Cursor.HAND);
+
+            buttons.getChildren().add(coursePane);
+
+            coursePane.setOnMouseClicked(e -> {
+                optionData.setTop(courseInfo.TAinfo());
+                toggleTextColors("red", "#171717", "#171717", "#171717");
+            });
+
+        }
+
+        buttons.getChildren().addAll(selectCoursePane, findPeoplePane, speakOutPane);
+
+    }
+
 }
