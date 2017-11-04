@@ -279,7 +279,7 @@ public class profileStudent {
             buttons.getChildren().add(coursePane);
 
             coursePane.setOnMouseClicked(e -> {
-                optionData.setTop(courseInfo.TAinfo());
+                optionData.setTop(StudentCourseTemplate.getStudentCourseDetailsView(model.getStudentEmailId(), model.getCourseId()));
                 toggleTextColors("red", "#171717", "#171717", "#171717");
             });
 

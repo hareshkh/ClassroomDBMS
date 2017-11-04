@@ -2,7 +2,6 @@ package com.ClassroomDBMS.database.assignments;
 
 import com.ClassroomDBMS.database.utils.DBUtils;
 import com.ClassroomDBMS.main.models.AssignmentModel;
-import com.ClassroomDBMS.main.models.ClassroomModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
