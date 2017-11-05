@@ -1,7 +1,9 @@
 package com.ClassroomDBMS.main.templates.Assignment;
 
 import com.ClassroomDBMS.database.assignments.DBAssignments;
+import com.ClassroomDBMS.main.functions.profileFaculty;
 import com.ClassroomDBMS.main.models.AssignmentModel;
+import com.ClassroomDBMS.main.templates.Submissions.ViewSubmissionsTemplate;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,6 +42,10 @@ public class ViewAllAssignmentsTemplate {
             viewSubmissions.setFont(new Font("Cambria", 16));
             viewSubmissions.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
             viewSubmissions.setTextFill(Color.web("#fff"));
+
+            viewSubmissions.setOnMouseClicked(e -> {
+                profileFaculty.optionData.setTop(ViewSubmissionsTemplate.getAllSubmissionView(model.getAssignmentId()));
+            });
 
             vBox.getChildren().addAll(message, details, viewSubmissions);
 

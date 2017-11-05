@@ -62,7 +62,7 @@ public class DBAssignments {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                assignmentModels.add(new AssignmentModel(rs.getString("courseId"), rs.getString("faculty_emailId"),
+                assignmentModels.add(new AssignmentModel(rs.getInt("id"), rs.getString("courseId"), rs.getString("faculty_emailId"),
                         rs.getString("timestamp"), rs.getString("deadline"),
                         rs.getString("assignment_details"), rs.getString("attachment_type"),
                         rs.getString("attachment_url")));
@@ -76,6 +76,38 @@ public class DBAssignments {
         }
 
         return assignmentModels;
+    }
+
+    public static AssignmentModel getAssignmentById(int assignmentId) {
+        AssignmentModel assignmentModel = null;
+
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.assignments", "id = ?");
+
+        try {
+            con = DBUtils.getConnection();
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, assignmentId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                assignmentModel = new AssignmentModel(rs.getInt("id"), rs.getString("courseId"), rs.getString("faculty_emailId"),
+                        rs.getString("timestamp"), rs.getString("deadline"),
+                        rs.getString("assignment_details"), rs.getString("attachment_type"),
+                        rs.getString("attachment_url"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtils.closeStatement(stmt);
+            DBUtils.closeConnection(con);
+        }
+
+        return assignmentModel;
     }
 
 }

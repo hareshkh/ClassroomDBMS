@@ -2,6 +2,7 @@ package com.ClassroomDBMS.main.models;
 
 public class AssignmentModel {
 
+    private int assignmentId;
     private String courseId;
     private String faculty_emailId;
     private String timestamp;
@@ -10,7 +11,8 @@ public class AssignmentModel {
     private String attachment_type;
     private String attachment_url;
 
-    public AssignmentModel(String courseId, String faculty_emailId, String timestamp, String deadline, String assignment_details, String attachment_type, String attachment_url) {
+    public AssignmentModel(int assignmentId, String courseId, String faculty_emailId, String timestamp, String deadline, String assignment_details, String attachment_type, String attachment_url) {
+        this.assignmentId = assignmentId;
         this.courseId = courseId;
         this.faculty_emailId = faculty_emailId;
         this.timestamp = timestamp;
@@ -18,6 +20,14 @@ public class AssignmentModel {
         this.assignment_details = assignment_details;
         this.attachment_type = attachment_type;
         this.attachment_url = attachment_url;
+    }
+
+    public int getAssignmentId() {
+        return assignmentId;
+    }
+
+    public void setAssignmentId(int assignmentId) {
+        this.assignmentId = assignmentId;
     }
 
     public String getCourseId() {

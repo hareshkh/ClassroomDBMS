@@ -3,9 +3,11 @@ package com.ClassroomDBMS.main.templates.StudentCourse;
 import com.ClassroomDBMS.database.announcements.DBAnnouncements;
 import com.ClassroomDBMS.database.assignments.DBAssignments;
 import com.ClassroomDBMS.database.classrooms.DBClassrooms;
+import com.ClassroomDBMS.main.functions.profileStudent;
 import com.ClassroomDBMS.main.models.AnnouncementModel;
 import com.ClassroomDBMS.main.models.AssignmentModel;
 import com.ClassroomDBMS.main.models.ClassroomModel;
+import com.ClassroomDBMS.main.templates.Submissions.SubmitAssignmentTemplate;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -70,6 +72,10 @@ public class StudentCourseTemplate {
             submitButton.setFont(new Font("Cambria", 16));
             submitButton.setStyle("-fx-focus-color: transparent;-fx-background-color: #6ac045;");
             submitButton.setTextFill(Color.web("#fff"));
+
+            submitButton.setOnMouseClicked(e -> {
+                profileStudent.optionData.setTop(SubmitAssignmentTemplate.getSubmitAssignmentView(model, studentEmailId, courseId));
+            });
 
             assignmentsContainer.getChildren().addAll(message, details, submitButton);
         }
