@@ -78,7 +78,7 @@ public class DBAssignments {
         return assignmentModels;
     }
 
-    
+
     public static AssignmentModel getAssignmentById(int assignmentId) {
         AssignmentModel assignmentModel = null;
 
