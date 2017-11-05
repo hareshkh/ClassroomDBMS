@@ -152,4 +152,39 @@ public class DBClassrooms {
         return result;
     }
 
+    public static ArrayList<ClassroomModel> getAllNonSelectedClassrooms(String emailId) {
+
+        ArrayList<ClassroomModel> result = new ArrayList<>();
+
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+//        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.classroomdetails", "true");
+        String query = "SELECT * FROM classroomdbms.classroomdetails WHERE courseId not in (select courseId from classroomdbms.studentcoursedetails where emailId = ?)";
+
+        try {
+            con = DBUtils.getConnection();
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, emailId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                result.add(new ClassroomModel(rs.getString("courseId"), rs.getString("faculty_emailId"),
+                        rs.getString("course_name"), rs.getString("lecture_timing"),
+                        rs.getString("tutorial_timing"), rs.getString("marks_distribution"),
+                        rs.getString("attendance_rule"), rs.getString("grading_rule"),
+                        rs.getString("lecture_hall"), rs.getString("literature_link")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtils.closeStatement(stmt);
+            DBUtils.closeConnection(con);
+        }
+
+        return result;
+    }
+
 }

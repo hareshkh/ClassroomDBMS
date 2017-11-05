@@ -20,7 +20,7 @@ public class SelectCoursesTemplate {
         VBox vBox = new VBox(10);
         vBox.setPadding(new Insets(10));
 
-        ArrayList<ClassroomModel> classroomModels = DBClassrooms.getAllClassrooms();
+        ArrayList<ClassroomModel> classroomModels = DBClassrooms.getAllNonSelectedClassrooms(studentEmailId);
 
         for (ClassroomModel model : classroomModels) {
             Label courseId = new Label(model.getCourseId());

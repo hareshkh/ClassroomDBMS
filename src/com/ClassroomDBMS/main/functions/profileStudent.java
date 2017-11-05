@@ -260,9 +260,9 @@ public class profileStudent {
 
     public static void updateCourses() {
         ArrayList<StudentCourseModel> studentCourseModels = DBStudentClassrooms.getAllCoursesByEmailId(studentEmailId);
+        buttons.getChildren().clear();
 
         for (StudentCourseModel model : studentCourseModels) {
-            buttons.getChildren().clear();
             course = GlyphsDude.createIconLabel(FontAwesomeIcon.BOOK,
                     model.getCourseId(),
                     "20",
