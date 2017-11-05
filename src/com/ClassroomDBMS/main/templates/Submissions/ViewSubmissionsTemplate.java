@@ -4,7 +4,9 @@ import com.ClassroomDBMS.database.assignments.DBAssignments;
 import com.ClassroomDBMS.database.submissions.DBSubmissions;
 import com.ClassroomDBMS.main.models.AssignmentModel;
 import com.ClassroomDBMS.main.models.SubmissionModel;
+import com.ClassroomDBMS.main.windows.home.main;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -41,7 +43,13 @@ public class ViewSubmissionsTemplate {
 
         }
 
-        return new BorderPane(vBox);
+        ScrollPane sc = new ScrollPane();
+        sc.setContent(vBox);
+        sc.setFitToWidth(true);
+        sc.setMaxHeight(main.window.getHeight() - 50);
+        main.window.heightProperty().addListener(e -> sc.setMaxHeight(main.window.getHeight() - 50));
+
+        return new BorderPane(sc);
 
     }
 
